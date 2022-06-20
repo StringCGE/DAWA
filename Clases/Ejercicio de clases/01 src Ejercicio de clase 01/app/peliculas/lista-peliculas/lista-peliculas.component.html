@@ -1,0 +1,13 @@
+<h1>Arreglo de Objetos</h1>
+<img src="https://c.tenor.com/1qrYT711uEoAAAAC/cargando.gif" *ngIf="!Movies"/>
+  
+<div *ngFor="let movie of Movies; let index=index" class="movies-container">
+    <div>
+      <h2>Nombre de la Película: {{movie.nombrePelicula}}</h2>
+      <h2>Director: {{movie.director | uppercase}}</h2>
+      <h2>Fecha de Estreno: {{movie.fechaLanzamiento | date:"dd-MM-yyyy"}}</h2>
+      <h2>Precio: {{movie.precio | currency}}</h2>
+    </div>
+    <button mat-raised-button color="primary" style="margin: 1rem;" (click)="eliminar(index)">Eliminar</button>    
+</div>
+  
