@@ -22,12 +22,15 @@ export class LoginComponent{
   onSubmit(){
     if (this.usuario =='admin' && this.password =='admin'){
       alert("Acceso correcto");
-    }else
+      console.log(this.usuarioLogin.value)
+      this.router.navigate(['/clientelogueado']);
+      this.dialogRef.close(); 
+    }else{
       alert("Acceso denegado");
-
-    console.log(this.usuarioLogin.value)
-    this.router.navigate(['/cliente']);
-    this.dialogRef.close(); 
+      console.log(this.usuarioLogin.value)
+      this.router.navigate(['/cliente']);
+      this.dialogRef.close(); 
+    }
   }
 
 }
