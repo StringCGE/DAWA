@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EstalogueadoService } from "../estalogueado.service";
 
 @Component({
   selector: 'app-page-inicial',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageInicialComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private estalogueadoService: EstalogueadoService
+  ) { }
 
   ngOnInit(): void {
+    this.estalogueadoService.salir();
   }
 
 }

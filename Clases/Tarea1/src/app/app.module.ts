@@ -16,6 +16,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PageInicialComponent } from './page-inicial/page-inicial.component'
+import {HeaderlogueadoComponent } from './headerlogueado/headerlogueado.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PageInicialComponent } from './page-inicial/page-inicial.component'
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    PageInicialComponent
+    PageInicialComponent,
+    HeaderlogueadoComponent
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 

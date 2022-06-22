@@ -1,3 +1,5 @@
-<app-header></app-header>
+
+<p *ngIf="logueado == 'yes'; else nologueado"><app-headerlogueado></app-headerlogueado></p>
+<ng-template #nologueado><p><app-header></app-header></p></ng-template>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
