@@ -9,9 +9,7 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderlogueadoComponent implements OnInit {
   
-  @Input() inputusuario: string;
-
-  usuario =  "admin";
+  @Input() usuariologueado = "";
 
   constructor(private dialog:MatDialog) { }
 
