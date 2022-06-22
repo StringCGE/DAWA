@@ -4,7 +4,6 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
   providedIn: 'root'
 })
 export class EstalogueadoService {
-
   private estalogueado = false;
   @Output() change: EventEmitter<EstalogueadoService> = new EventEmitter();
   public usuario = "";
@@ -13,7 +12,6 @@ export class EstalogueadoService {
     this.estalogueado = true;
     this.evento();
   }
-
   public salir(){
     this.estalogueado = false;
     this.evento();
@@ -21,14 +19,10 @@ export class EstalogueadoService {
   private evento(){
     this.change.emit(this);
   }
-
   public estado() : boolean {
     return this.estalogueado;
   }
-  
   constructor() { 
     this.estalogueado = false;
   }
-
-
 }
