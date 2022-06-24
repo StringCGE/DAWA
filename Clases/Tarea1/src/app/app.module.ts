@@ -17,6 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PageInicialComponent } from './page-inicial/page-inicial.component'
 import {HeaderlogueadoComponent } from './headerlogueado/headerlogueado.component'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {HeaderlogueadoComponent } from './headerlogueado/headerlogueado.componen
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 
     MatButtonModule, ReactiveFormsModule, MatInputModule, 
-    MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule, FormsModule
+    MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule, FormsModule,
+    MatMenuModule, MatGridListModule
   ],
   entryComponents: [LoginComponent],
   providers: [],

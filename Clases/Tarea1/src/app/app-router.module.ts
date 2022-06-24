@@ -6,6 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { PageInicialComponent } from "./page-inicial/page-inicial.component";
 
 
+
 //route
 const routes:Routes=[
     {path:'',component:PageInicialComponent},

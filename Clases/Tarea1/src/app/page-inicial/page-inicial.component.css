@@ -1,0 +1,21 @@
+mat-grid-tile {
+  background: lightblue;
+}
+.center-content {
+    text-align: -webkit-center;
+    background-color: yellow;
+}
+
+.classe{
+  font-style: italic;
+  font-size: 50px;
+  font-weight: bold;
+}
+.classe2{
+  font-size: 25px;
+}
+
+.tile-image {
+  width: auto;
+  height: 100%;
+}
