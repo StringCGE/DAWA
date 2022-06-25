@@ -16,6 +16,6 @@ mat-grid-tile {
 }
 
 .tile-image {
-  width: auto;
+  width: 100%;
   height: 100%;
 }
