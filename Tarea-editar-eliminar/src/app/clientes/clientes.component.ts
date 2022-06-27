@@ -110,6 +110,7 @@ export class ClientesComponent  implements OnInit {
 
   openDialogModificar(clie:any){
     
+    console.log("openDialog");
     this.dialog.open(ModificarClienteComponent, {
       data:{
         usuarioModificar: {
@@ -124,4 +125,9 @@ export class ClientesComponent  implements OnInit {
     })
   }
 
+  buscarcliente($event: any){
+    this.dataSource.filter = $event.target.value;
+    console.log("event");
+    console.log(event);
+  }
 }

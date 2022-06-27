@@ -1,6 +1,12 @@
 <br>
 <button mat-raised-button color="accent" (click)="openDialogAgregar()"> Agregar</button>
-<button mat-raised-button color="accent" (click)="openDialogAgregar()"> Buscar</button>
+<!--<button mat-raised-button color="accent" (click)="buscarcliente($event)"> Buscar</button>-->
+<mat-form-field apparence="fill">
+    <input matInput placeholder="buscar" autocomplete="off" (keyup)="buscarcliente($event)">
+</mat-form-field>
+<!--
+<button mat-raised-button color="accent" (click)="buscarcliente($event)"> Buscar</button>
+-->
 <br>
 <br><br>
 
