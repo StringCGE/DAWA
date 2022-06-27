@@ -28,8 +28,10 @@ export class AgregarClienteComponent implements OnInit {
   
   onSubmit()
   {
+    
     let objToSend: NavigationExtras = {
       queryParams: {
+        tipo: "agregar",
         cedula: this.usuarioNuevo.value.cedula,
         nombres: this.usuarioNuevo.value.nombres,
         apellidos: this.usuarioNuevo.value.apellidos,
@@ -46,8 +48,10 @@ export class AgregarClienteComponent implements OnInit {
   }
 
   redirectTo(uri:string, objToSend:NavigationExtras){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri],{ state: { datosCliente: objToSend}}));
+    this.router.navigateByUrl('/', {skipLocationChange: true})
+    .then(()=>
+      this.router.navigate([uri],{ state: { datosCliente: objToSend}})
+    );
   }
 
   cancelar()
