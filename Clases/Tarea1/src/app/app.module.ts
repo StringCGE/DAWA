@@ -19,6 +19,7 @@ import { PageInicialComponent } from './page-inicial/page-inicial.component'
 import {HeaderlogueadoComponent } from './headerlogueado/headerlogueado.component'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { OfertasComponent } from './ofertas/ofertas.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FooterComponent,
     LoginComponent,
     PageInicialComponent,
-    HeaderlogueadoComponent
+    HeaderlogueadoComponent,
+    OfertasComponent
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 

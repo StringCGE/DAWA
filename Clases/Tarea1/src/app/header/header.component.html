@@ -25,11 +25,7 @@
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Item 2</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="menuoferta">Ofertas</button>
-      <mat-menu #menuoferta="matMenu" xPosition="after">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
+      <button mat-button (click)="openOfertas()">Ofertas</button>
       <button mat-button [matMenuTriggerFor]="menucolecciones">Colecciones</button>
       <mat-menu #menucolecciones="matMenu" yPosition="above">
         <button mat-menu-item>Item 1</button>

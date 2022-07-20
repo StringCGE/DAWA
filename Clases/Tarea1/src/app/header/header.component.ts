@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginComponent} from '../login/login.component';
+import { Router } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
@@ -10,10 +11,14 @@ import {MatMenuModule} from '@angular/material/menu';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dialog:MatDialog) { }
+  constructor(private dialog:MatDialog, private router: Router) { }
 
   openDialogSesion(){
     this.dialog.open(LoginComponent)
+  }
+
+  openOfertas(){
+    this.router.navigate(['/ofertas']);
   }
 
   ngOnInit(): void {
