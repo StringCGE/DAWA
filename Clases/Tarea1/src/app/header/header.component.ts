@@ -24,4 +24,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openColecciones(){
+    this.router.navigate(['/colecciones']);
+  }
 }
