@@ -4,6 +4,7 @@ import { ClientelogueadoComponent } from "./clientelogueado/clientelogueado.comp
 import { ClientesComponent } from "./clientes/clientes.component";
 import { LoginComponent } from "./login/login.component";
 import { PageInicialComponent } from "./page-inicial/page-inicial.component";
+import { NovedadesComponent } from "./novedades/novedades.component";
 import { OfertasComponent } from "./ofertas/ofertas.component";
 
 import { ColeccionesComponent } from "./colecciones/colecciones.component";
@@ -22,7 +23,8 @@ const routes:Routes=[
     {path: 'ofertas', component: OfertasComponent},
 
     {path: 'colecciones', component: ColeccionesComponent},
-    {path: 'hombre', component: SeccionHombresComponent}
+    {path: 'hombre', component: SeccionHombresComponent},
+    {path: 'novedades', component: NovedadesComponent}
 
 ]
 

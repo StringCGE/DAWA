@@ -3,21 +3,26 @@
     max-width: 400px;
  }
  */ 
-.example-header-image {
+/*.example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
-}
+}*/
 
 mat-grid-list{
-    height: auto;
+    justify-content: center;
 }
 mat-grid-tile {
+    justify-content: center;
+    position: absolute;
     background: lightblue;
+    /*padding: 10px;*/
     /*overflow:auto;*/
     /*height: 100px;*/
 }
 mat-card {
-    height: 100px;
+    height:75%;
+    width:75%;
+    /*padding-left: 50px;*/
 }
 
 

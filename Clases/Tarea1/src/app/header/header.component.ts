@@ -25,6 +25,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/hombre']);
   }
 
+  openNovedades(){
+    this.router.navigate(['/novedades']);
+  }
+  openMujer(){
+    console.log("Ups me olvide");
+  }
   ngOnInit(): void {
   }
 
