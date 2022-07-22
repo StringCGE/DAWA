@@ -15,11 +15,7 @@
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Item 2</button>
       </mat-menu>-->
-      <button mat-button [matMenuTriggerFor]="menuhombre">Hombre</button>
-      <mat-menu #menuhombre="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
+      <button mat-button (click)="openHombres()">Hombre</button>
       <button mat-button [matMenuTriggerFor]="menumujer">Mujer</button>
       <mat-menu #menumujer="matMenu" xPosition="before">
         <button mat-menu-item>Item 1</button>

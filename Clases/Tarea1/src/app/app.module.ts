@@ -20,6 +20,8 @@ import {HeaderlogueadoComponent } from './headerlogueado/headerlogueado.componen
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { OfertasComponent } from './ofertas/ofertas.component';
+import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { OfertasComponent } from './ofertas/ofertas.component';
     LoginComponent,
     PageInicialComponent,
     HeaderlogueadoComponent,
-    OfertasComponent
+    OfertasComponent,
+    SeccionHombresComponent 
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 

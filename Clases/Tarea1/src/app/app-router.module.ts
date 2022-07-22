@@ -5,6 +5,7 @@ import { ClientesComponent } from "./clientes/clientes.component";
 import { LoginComponent } from "./login/login.component";
 import { PageInicialComponent } from "./page-inicial/page-inicial.component";
 import { OfertasComponent } from "./ofertas/ofertas.component";
+import { SeccionHombresComponent } from "./seccion-hombres/seccion-hombres.component";
 
 
 
@@ -15,7 +16,8 @@ const routes:Routes=[
     {path:'cliente',component:ClientesComponent},
     {path:'clientelogueado',component:ClientelogueadoComponent},
     {path:'sesion', component:LoginComponent},
-    {path: 'ofertas', component: OfertasComponent}
+    {path: 'ofertas', component: OfertasComponent},
+    {path: 'hombre', component: SeccionHombresComponent}
 ]
 
 @NgModule({
