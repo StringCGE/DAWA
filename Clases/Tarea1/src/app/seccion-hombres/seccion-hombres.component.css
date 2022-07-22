@@ -1,3 +1,37 @@
+
+/*.example-card {
+    max-width: 400px;
+ }
+ */ 
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+mat-grid-list{
+    height: auto;
+}
 mat-grid-tile {
     background: lightblue;
+    /*overflow:auto;*/
+    /*height: 100px;*/
 }
+mat-card {
+    height: 100px;
+}
+
+
+.contenedor-hombre {
+	/*overflow: hidden;
+    margin: 20px;*/
+
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    margin: 20px auto 20px auto;
+}
+
+

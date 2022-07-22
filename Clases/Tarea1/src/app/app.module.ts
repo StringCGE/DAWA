@@ -21,6 +21,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { ColeccionesComponent } from './colecciones/colecciones.component';
+import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ColeccionesComponent } from './colecciones/colecciones.component';
     LoginComponent,
     PageInicialComponent,
     HeaderlogueadoComponent,
-    OfertasComponent,ColeccionesComponent
+    OfertasComponent,ColeccionesComponent,
+    SeccionHombresComponent
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 
