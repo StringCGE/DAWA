@@ -22,6 +22,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { ColeccionesComponent } from './colecciones/colecciones.component';
 import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.component';
+import { NovedadesComponent } from './novedades/novedades.component';
+
+import { MatTableModule } from '@angular/material/table';
+import { AgregarNovedadesComponent } from './agregar-novedades/agregar-novedades.component';
+import { ModificarNovedadesComponent } from './modificar-novedades/modificar-novedades.component';
+
 
 @NgModule({
   declarations: [
@@ -33,13 +39,16 @@ import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.compo
     PageInicialComponent,
     HeaderlogueadoComponent,
     OfertasComponent,ColeccionesComponent,
-    SeccionHombresComponent
+    SeccionHombresComponent,
+    NovedadesComponent,
+    AgregarNovedadesComponent,
+    ModificarNovedadesComponent
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 
     MatButtonModule, ReactiveFormsModule, MatInputModule, 
     MatCardModule, MatToolbarModule, MatIconModule, MatDialogModule, FormsModule,
-    MatMenuModule, MatGridListModule
+    MatMenuModule, MatGridListModule, MatTableModule
   ],
   entryComponents: [LoginComponent],
   providers: [],

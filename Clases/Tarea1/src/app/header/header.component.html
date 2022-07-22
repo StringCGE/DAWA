@@ -6,7 +6,7 @@
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         
       </button>
-      <button mat-button (click)="openDialogSesion()">Novedades</button>
+      <button mat-button (click)="openNovedades()">Novedades</button>
       <!--
         <mat-icon>webhook</mat-icon> 
         mat-raised-button
@@ -16,16 +16,10 @@
         <button mat-menu-item>Item 2</button>
       </mat-menu>-->
       <button mat-button (click)="openHombres()">Hombre</button>
-      <button mat-button [matMenuTriggerFor]="menumujer">Mujer</button>
-      <mat-menu #menumujer="matMenu" xPosition="before">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
+      <button mat-button (click)="openMujer()">Mujer</button>
       <button mat-button (click)="openOfertas()">Ofertas</button>
-      <button mat-button [matMenuTriggerFor]="menucolecciones" (click)="openColecciones()">Colecciones</button>
-      <mat-menu #menucolecciones="matMenu" yPosition="above">
-      </mat-menu>
-      <mat-icon>login</mat-icon>
+      <button mat-button (click)="openColecciones()">Colecciones</button>
+      <mat-icon (click)="openDialogSesion()">login</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>
 </p>
