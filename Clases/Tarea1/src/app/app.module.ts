@@ -31,8 +31,7 @@ import { ColeccionesComponent } from './colecciones/colecciones.component';
     LoginComponent,
     PageInicialComponent,
     HeaderlogueadoComponent,
-    OfertasComponent,
-    ColeccionesComponent
+    OfertasComponent,ColeccionesComponent
   ],
   imports: [
     BrowserModule, AppRouterModule, BrowserAnimationsModule, 

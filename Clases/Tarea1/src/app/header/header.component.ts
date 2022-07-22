@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/ofertas']);
   }
 
+  openHombres(){
+    this.router.navigate(['/hombre']);
+  }
+
   ngOnInit(): void {
   }
 
