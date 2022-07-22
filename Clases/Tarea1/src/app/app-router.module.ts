@@ -21,7 +21,7 @@ const routes:Routes=[
     {path:'sesion', component:LoginComponent},
     {path: 'ofertas', component: OfertasComponent},
 
-    {path: 'colecciones', component: ColeccionesComponent}
+    {path: 'colecciones', component: ColeccionesComponent},
     {path: 'hombre', component: SeccionHombresComponent}
 
 ]
