@@ -28,6 +28,7 @@ import { NovedadesComponent } from './novedades/novedades.component';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { PageInicialComponent } from './page-inicial/page-inicial.component'
 import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 
 
@@ -35,6 +36,7 @@ import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.compo
   declarations: [
     AgregarNovedadesComponent,
     AppComponent,
+    CarritoComponent,
     ClientesComponent,
     ColeccionesComponent,
     FooterComponent,

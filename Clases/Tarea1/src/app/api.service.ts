@@ -23,6 +23,16 @@ export class ApiService {
     new ItemRopa(9,"Roopa",0.99,28,"../../assets/img/seccion-hombre/item_09.jpg",28),
     new ItemRopa(10,"Roopa",0.09,80,"../../assets/img/seccion-hombre/item_10.jpg",80)
   ];
+  public Hombre_GetItem(id:number) : ItemRopa{
+    let l:ItemRopa;
+    l = new ItemRopa();
+    this.lItemRopa.forEach(function (value) {
+      if(value.id == id){
+        l = value;
+      }
+    });
+    return l;
+  }
   public Hombre_GetItems() : ItemRopa[]{
     return this.lItemRopa;
   }
