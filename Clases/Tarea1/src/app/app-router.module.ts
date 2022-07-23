@@ -9,6 +9,7 @@ import { OfertasComponent } from "./ofertas/ofertas.component";
 
 import { ColeccionesComponent } from "./colecciones/colecciones.component";
 import { SeccionHombresComponent } from "./seccion-hombres/seccion-hombres.component";
+import { CarritoComponent } from "./carrito/carrito.component";
 
 
 
@@ -21,6 +22,7 @@ const routes:Routes=[
     {path:'clientelogueado',component:ClientelogueadoComponent},
     {path:'sesion', component:LoginComponent},
     {path: 'ofertas', component: OfertasComponent},
+    {path: 'carrito', component: CarritoComponent},
 
     {path: 'colecciones', component: ColeccionesComponent},
     {path: 'hombre', component: SeccionHombresComponent},

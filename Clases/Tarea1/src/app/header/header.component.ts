@@ -37,6 +37,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/colecciones']);
   }
 
+  openCarrito(){
+    this.router.navigate(['/carrito']);
+  }
+
   ngOnInit(): void {
     /**/
   }

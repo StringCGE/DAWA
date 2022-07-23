@@ -164,10 +164,10 @@
         <div class="row">
             <div class="col">
                 <br>
-                    <button mat-raised-button color="primary" (click)="openDialogAgregar()" style="float: right;"> Agregar</button>
-                    <mat-form-field apparence="fill">
-                        <input matInput placeholder="Buscar" autocomplete="off" (keyup)="buscarnovedades($event)">
-                                    </mat-form-field>
+                <button mat-raised-button color="primary" (click)="openDialogAgregar()" style="float: right;"> Agregar</button>
+                <mat-form-field apparence="fill">
+                    <input matInput placeholder="Buscar" autocomplete="off" (keyup)="buscarnovedades($event)">
+                </mat-form-field>
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                     <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -202,5 +202,4 @@
         </div>
     </div>
     <br><br>
-
 </main>

@@ -4,7 +4,23 @@
         <h5 class="titulodecompras">viene a comprar o que hace</h5>
     </div>
     <mat-grid-list cols="4" rowHeight="1:1.5">
-        <mat-grid-tile><app-item-seccion-hombres
+        
+        <mat-grid-tile *ngFor="let itemhombre of lItemRopa; let i = index">
+            <app-item-seccion-hombres
+            [itemNombre]="itemhombre.nombre"
+                [itemPrecio]="itemhombre.precio"
+                [itemID]="itemhombre.id"
+                [itemStock]="itemhombre.stock"
+                [itemsrcimg]="itemhombre.srcimg">
+            </app-item-seccion-hombres>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>
+
+<!--
+
+<mat-grid-tile><app-item-seccion-hombres
             [itemNombre]="'Gracias'"
             [itemPrecio]="44.99"
             [itemID]="1"
@@ -74,6 +90,5 @@
             [itemStock]="80"
             [itemsrcimg]="'../../assets/img/seccion-hombre/item_10.jpg'"></app-item-seccion-hombres>
         </mat-grid-tile>
-    </mat-grid-list>
-</div>
 
+-->
