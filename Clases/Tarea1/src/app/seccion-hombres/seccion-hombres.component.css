@@ -1,0 +1,52 @@
+
+/*.example-card {
+    max-width: 400px;
+ }
+ */ 
+/*.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}*/
+
+mat-grid-list{
+    justify-content: center;
+}
+mat-grid-tile {
+    justify-content: center;
+    position: absolute;
+    background: lightblue;
+    /*padding: 10px;*/
+    /*overflow:auto;*/
+    /*height: 100px;*/
+}
+/*
+mat-card {
+    height:75%;
+    width:75%;
+    text-align: center;
+    //padding-left: 50px;
+}
+*/
+
+.contenedor-hombre {
+	/*overflow: hidden;
+    margin: 20px;*/
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+    margin: 20px auto 20px auto;
+}
+
+
+.titulodecompras {
+    font-size:200%;
+}
+
+.titulodecomprascontenedor {
+    margin:10px;
+    padding: 10px auto;
+}
