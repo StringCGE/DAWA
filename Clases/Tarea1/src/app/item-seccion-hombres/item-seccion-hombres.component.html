@@ -1,0 +1,22 @@
+<div class="item-card">
+    <div class="card">
+        <img mat-card-md-image [src]="itemsrcimg" class="item-img" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{itemNombre}}</h5>
+            <span class="item-precio"> Precio </span>
+            <span class="item-precio"> {{itemPrecio | currency:'USD':true:'1.2-2'}}</span>
+            <div>
+                <input mdInput type="number" id="myNumber" max={{itemStock}} min=0 [(ngModel)]="itemCantidad"/>
+                <button class="item-button" mat-fab aria-label="shopping_cart">
+                    <mat-icon>shopping_cart</mat-icon>
+                </button>
+            </div>
+            
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">En stock. {{itemStock}} unidades</small>
+        </div>
+    </div>
+</div>
+
+   
