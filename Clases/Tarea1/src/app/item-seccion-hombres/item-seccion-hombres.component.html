@@ -7,8 +7,11 @@
             <span class="item-precio"> {{itemPrecio | currency:'USD':true:'1.2-2'}}</span>
             <div>
                 <input mdInput type="number" id="myNumber" max={{itemStock}} min=0 [(ngModel)]="itemCantidad"/>
-                <button class="item-button" mat-fab aria-label="shopping_cart">
+                <button (click)="AgregarCarrito()" class="item-button" mat-fab aria-label="shopping_cart">
                     <mat-icon>shopping_cart</mat-icon>
+                </button>
+                <button (click)="EliminarCarrito()" class="item-button" mat-fab aria-label="shopping_cart">
+                    <mat-icon>remove_shopping_cart</mat-icon>
                 </button>
             </div>
             

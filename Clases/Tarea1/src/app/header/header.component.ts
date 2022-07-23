@@ -28,13 +28,17 @@ export class HeaderComponent implements OnInit {
   openNovedades(){
     this.router.navigate(['/novedades']);
   }
+  
   openMujer(){
     console.log("Ups me olvide");
   }
-  ngOnInit(): void {
-  }
-
+  
   openColecciones(){
     this.router.navigate(['/colecciones']);
   }
+
+  ngOnInit(): void {
+    /**/
+  }
+
 }

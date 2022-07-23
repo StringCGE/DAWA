@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { ItemRopaCarritoInterface } from '../interfaces/item-ropa-carrito-interface';
+import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
 
 @Component({
   selector: 'app-item-seccion-hombres',
@@ -7,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ItemSeccionHombresComponent implements OnInit {
 
-  constructor() { }
+  
   @Input() itemNombre: string;
   @Input() itemPrecio: number;
   @Input() itemID: number;
@@ -15,7 +18,24 @@ export class ItemSeccionHombresComponent implements OnInit {
   @Input() itemsrcimg: string;
   itemCantidad: number;
 
+  constructor(private apiService: ApiService) { }
+
   ngOnInit(): void {
   }
+  AgregarCarrito(){
+    let ic : ItemRopaCarritoInterface;
+    ic = new ItemRopaCarrito();
 
+    ic.id = this.itemID;
+    ic.cantidad = this.itemCantidad;
+    this.apiService.AñadirItemCarrito(ic);
+  }
+  EliminarCarrito(){
+    let ic : ItemRopaCarritoInterface;
+    ic = new ItemRopaCarrito();
+
+    ic.id = this.itemID;
+    ic.cantidad = this.itemCantidad;
+    this.apiService.EliminarItemCarrito(ic);
+  }
 }
