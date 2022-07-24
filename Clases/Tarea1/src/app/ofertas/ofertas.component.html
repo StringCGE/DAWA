@@ -12,8 +12,17 @@
         </div>
         
 
-        <div class="cuadricula-juegos">
+        <div class="cuadricula-juegos" *ngFor="let itemhombre of lItemRopa; let i = index">
 
+            <mat-grid-tile >
+                <app-item-seccion-hombres
+                [itemNombre]="itemhombre.nombre"
+                    [itemPrecio]="itemhombre.precio"
+                    [itemID]="itemhombre.id"
+                    [itemStock]="itemhombre.stock"
+                    [itemsrcimg]="itemhombre.srcimg">
+                </app-item-seccion-hombres>
+            </mat-grid-tile>
 
             <div class="cuadricula" id="1">
                 <div class="imagen-card">

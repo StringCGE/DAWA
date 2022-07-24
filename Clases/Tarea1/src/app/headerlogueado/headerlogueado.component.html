@@ -1,7 +1,14 @@
 <mat-toolbar color="primary">  
-    <mat-icon>webhook</mat-icon> 
-    {{usuariologueado}} Logueado Rock-Developers
-    <span class="example-spacer"></span>
-      
-    <button mat-raised-button (click)="openDialogSesion()">Cerrar Sesion</button>
-  </mat-toolbar>
+  <mat-icon>webhook</mat-icon> 
+  {{usuariologueado}} Logueado Rock-Developers
+  <span class="example-spacer"></span>
+  <button mat-button (click)="openNovedades()">Novedades</button>
+  
+  <button mat-button (click)="openHombres()">Hombre</button>
+  <button mat-button (click)="openMujer()">Mujer</button>
+  <button mat-button (click)="openOfertas()">Ofertas</button>
+  <button mat-button (click)="openColecciones()">Colecciones</button>
+  <button mat-button (click)="openCarrito()">Carrito</button>
+
+  <mat-icon (click)="cerrarSesion()">logout</mat-icon>
+</mat-toolbar>

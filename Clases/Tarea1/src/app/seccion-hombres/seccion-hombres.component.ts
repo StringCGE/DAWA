@@ -13,7 +13,7 @@ export class SeccionHombresComponent implements OnInit {
   protected lItemRopa:ItemRopa[] = [];
   ngOnInit(): void {
     this.lItemRopa = this.apiService.Hombre_GetItems();
-    this.apiService.change.subscribe(apiService => {
+    this.apiService.cambioHombre.subscribe(apiService => {
       this.lItemRopa = apiService.Hombre_GetItems();
     });
   }

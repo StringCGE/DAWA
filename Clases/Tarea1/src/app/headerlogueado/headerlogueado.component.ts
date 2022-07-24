@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
+import { EstalogueadoService } from "../estalogueado.service";
 
 @Component({
   selector: 'app-headerlogueado',
@@ -11,10 +11,38 @@ export class HeaderlogueadoComponent implements OnInit {
   
   @Input() usuariologueado = "";
 
-  constructor(private dialog:MatDialog) { }
+  constructor(
+    private router: Router,
+    private estalogueadoService: EstalogueadoService
+  ) { }
 
-  openDialogSesion(){
-    this.dialog.open(LoginComponent)
+  openOfertas(){
+    this.router.navigate(['/ofertas']);
+  }
+
+  openHombres(){
+    this.router.navigate(['/hombre']);
+  }
+
+  openNovedades(){
+    this.router.navigate(['/novedades']);
+  }
+  
+  openMujer(){
+    console.log("Ups me olvide");
+  }
+  
+  openColecciones(){
+    this.router.navigate(['/colecciones']);
+  }
+
+  openCarrito(){
+    this.router.navigate(['/carrito']);
+  }
+
+  cerrarSesion(){
+    this.estalogueadoService.salir();
+    this.router.navigate(['']);
   }
 
   ngOnInit(): void {

@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ItemRopaCarritoInterface } from '../interfaces/item-ropa-carrito-interface';
 import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
+import { EstalogueadoService } from '../estalogueado.service';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-item-seccion-hombres',
@@ -18,24 +21,38 @@ export class ItemSeccionHombresComponent implements OnInit {
   @Input() itemsrcimg: string;
   itemCantidad: number;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private dialog:MatDialog, private apiService: ApiService, private estalogueadoService: EstalogueadoService) { }
 
   ngOnInit(): void {
   }
   AgregarCarrito(){
-    let ic : ItemRopaCarritoInterface;
-    ic = new ItemRopaCarrito();
+    if(this.estalogueadoService.estado()){
+      let ic : ItemRopaCarritoInterface;
+      ic = new ItemRopaCarrito();
 
-    ic.id = this.itemID;
-    ic.cantidad = this.itemCantidad;
-    this.apiService.AñadirItemCarrito(ic);
+      ic.id = this.itemID;
+      ic.cantidad = this.itemCantidad;
+      this.apiService.AñadirItemCarrito(ic);
+    }else{
+      this.openDialogSesion();
+    }
+    
   }
-  EliminarCarrito(){
-    let ic : ItemRopaCarritoInterface;
-    ic = new ItemRopaCarrito();
 
-    ic.id = this.itemID;
-    ic.cantidad = this.itemCantidad;
-    this.apiService.EliminarItemCarrito(ic);
+  openDialogSesion(){
+    this.dialog.open(LoginComponent)
+  }
+
+  EliminarCarrito(){
+    if(this.estalogueadoService.estado()){
+      let ic : ItemRopaCarritoInterface;
+      ic = new ItemRopaCarrito();
+
+      ic.id = this.itemID;
+      ic.cantidad = this.itemCantidad;
+      this.apiService.EliminarItemCarrito(ic);
+    }else{
+      this.openDialogSesion();
+    }
   }
 }
