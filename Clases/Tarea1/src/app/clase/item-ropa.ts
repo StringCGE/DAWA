@@ -1,5 +1,5 @@
 export class ItemRopa {
-    constructor(id?:number, nombre?:string, precio?:number, stock?:number, srcimg?:string, cantidad?: number, codigo?:string, preciooferta?:number){
+    constructor(id?:number, nombre?:string, precio?:number, stock?:number, srcimg?:string, cantidad?: number, codigo?:string, preciooferta?:number, detalle?:string){
         this.id = id || 0;
         this.nombre = nombre || "";
         this.precio = precio || 0;
@@ -8,6 +8,7 @@ export class ItemRopa {
         this.cantidad = cantidad || 0;
         this.codigo = codigo || "";
         this.preciooferta = preciooferta || 0;
+        this.detalle = detalle || "";
     }
     id: number;
     nombre: string;
@@ -17,4 +18,5 @@ export class ItemRopa {
     cantidad: number;
     codigo: string;
     preciooferta: number;
+    detalle: string;
 }

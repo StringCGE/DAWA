@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
   
   openMujer(){
-    console.log("Ups me olvide");
+    this.router.navigate(['/mujer']);
   }
   
   openColecciones(){

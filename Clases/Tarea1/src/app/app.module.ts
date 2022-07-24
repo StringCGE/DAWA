@@ -22,12 +22,15 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderlogueadoComponent } from './headerlogueado/headerlogueado.component'
 import { ItemSeccionHombresComponent } from './item-seccion-hombres/item-seccion-hombres.component';
+import { ItemSeccionMujeresComponent } from './item-seccion-mujeres/item-seccion-mujeres.component';
 import { LoginComponent } from './login/login.component';
 import { ModificarNovedadesComponent } from './modificar-novedades/modificar-novedades.component';
+import { MujerComponent } from './mujer/mujer.component';
 import { NovedadesComponent } from './novedades/novedades.component';
 import { OfertasComponent } from './ofertas/ofertas.component';
 import { PageInicialComponent } from './page-inicial/page-inicial.component'
 import { SeccionHombresComponent } from './seccion-hombres/seccion-hombres.component';
+import { SeccionMujeresComponent } from './seccion-mujeres/seccion-mujeres.component';
 import { CarritoComponent } from './carrito/carrito.component';
 
 
@@ -43,12 +46,15 @@ import { CarritoComponent } from './carrito/carrito.component';
     HeaderComponent,
     HeaderlogueadoComponent,
     ItemSeccionHombresComponent,
+    ItemSeccionMujeresComponent,
     LoginComponent,
     ModificarNovedadesComponent,
+    MujerComponent,
     NovedadesComponent,
     OfertasComponent,ColeccionesComponent,
     PageInicialComponent,
     SeccionHombresComponent,
+    SeccionMujeresComponent,
   ],
   imports: [
     AppRouterModule,

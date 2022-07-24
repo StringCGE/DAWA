@@ -10,6 +10,8 @@ import { OfertasComponent } from "./ofertas/ofertas.component";
 import { ColeccionesComponent } from "./colecciones/colecciones.component";
 import { SeccionHombresComponent } from "./seccion-hombres/seccion-hombres.component";
 import { CarritoComponent } from "./carrito/carrito.component";
+import { MujerComponent } from "./mujer/mujer.component";
+import { SeccionMujeresComponent } from "./seccion-mujeres/seccion-mujeres.component";
 
 
 
@@ -20,13 +22,15 @@ const routes:Routes=[
     {path:'pageInicial',component:PageInicialComponent},
     {path:'cliente',component:ClientesComponent},
     {path:'clientelogueado',component:ClientelogueadoComponent},
-    {path:'sesion', component:LoginComponent},
-    {path: 'ofertas', component: OfertasComponent},
-    {path: 'carrito', component: CarritoComponent},
-
-    {path: 'colecciones', component: ColeccionesComponent},
-    {path: 'hombre', component: SeccionHombresComponent},
-    {path: 'novedades', component: NovedadesComponent}
+    
+    {path:'hombre', component: SeccionHombresComponent},
+    {path:'mujer', component: SeccionMujeresComponent},
+    {path:'ofertas', component: OfertasComponent},
+    {path:'colecciones', component: ColeccionesComponent},
+    {path:'novedades', component: NovedadesComponent},
+    {path:'carrito', component: CarritoComponent},
+    
+    {path:'sesion', component:LoginComponent}
 
 ]
 

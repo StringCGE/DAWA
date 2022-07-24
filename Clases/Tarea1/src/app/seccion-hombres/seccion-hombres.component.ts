@@ -13,12 +13,12 @@ export class SeccionHombresComponent implements OnInit {
   constructor(private apiService: ApiService,
               private router: Router) { }
   protected lItemRopa:ItemRopa[] = [];
+
   ngOnInit(): void {
     this.lItemRopa = this.apiService.Hombre_GetItems();
     this.apiService.cambioHombre.subscribe(apiService => {
       this.lItemRopa = apiService.Hombre_GetItems();
     });
   }
-
   
 }

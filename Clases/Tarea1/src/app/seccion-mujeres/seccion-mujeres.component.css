@@ -1,0 +1,27 @@
+
+mat-grid-list{
+    justify-content: center;
+}
+mat-grid-tile {
+    justify-content: center;
+    position: absolute;
+}
+
+.contenedor-mujer {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    justify-content: center;
+    margin: 20px auto 20px auto;
+}
+
+
+.titulodecompras {
+    font-size:200%;
+}
+
+.titulodecomprascontenedor {
+    margin:10px;
+    padding: 10px auto;
+}
