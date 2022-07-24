@@ -29,13 +29,13 @@ export class LoginComponent{
       alert("Acceso correcto");
       console.log(this.usuarioLogin.value);
       this.estalogueadoService.logear(this.usuario);
-      this.router.navigate(['/clientelogueado']);
+      this.router.navigate(['']);
       this.dialogRef.close(); 
     }else{
       alert("Acceso denegado");
       console.log(this.usuarioLogin.value);
       this.estalogueadoService.salir();
-      this.router.navigate(['/cliente']);
+      this.router.navigate(['']);
       this.dialogRef.close(); 
     }
   }
