@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemRopa } from '../clase/item-ropa';
 
 @Component({
   selector: 'app-colecciones',

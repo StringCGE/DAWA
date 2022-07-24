@@ -13,7 +13,7 @@ export class PageInicialComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.estalogueadoService.salir();
+    
   }
 
 }

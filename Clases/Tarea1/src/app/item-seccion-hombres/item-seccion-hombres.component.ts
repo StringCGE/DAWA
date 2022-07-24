@@ -5,6 +5,7 @@ import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
 import { EstalogueadoService } from '../estalogueado.service';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-seccion-hombres',
@@ -21,7 +22,10 @@ export class ItemSeccionHombresComponent implements OnInit {
   @Input() itemsrcimg: string;
   itemCantidad: number;
 
-  constructor(private dialog:MatDialog, private apiService: ApiService, private estalogueadoService: EstalogueadoService) { }
+  constructor(private dialog:MatDialog,
+              private apiService: ApiService,
+              private estalogueadoService: EstalogueadoService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }

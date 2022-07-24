@@ -7,7 +7,7 @@ export class ItemRopa {
         this.srcimg = srcimg || "";
         this.cantidad = cantidad || 0;
         this.codigo = codigo || "";
-        this.preciooferta = preciooferta || "";
+        this.preciooferta = preciooferta || 0;
     }
     id: number;
     nombre: string;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ItemRopa } from '../clase/item-ropa';
 @Component({
@@ -9,7 +10,8 @@ import { ItemRopa } from '../clase/item-ropa';
 })
 export class SeccionHombresComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+              private router: Router) { }
   protected lItemRopa:ItemRopa[] = [];
   ngOnInit(): void {
     this.lItemRopa = this.apiService.Hombre_GetItems();

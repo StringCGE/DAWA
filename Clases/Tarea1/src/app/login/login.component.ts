@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import {Router} from '@angular/router';
@@ -14,6 +14,7 @@ export class LoginComponent{
   password:string;
 
   constructor(
+    private cdRef: ChangeDetectorRef,
     private router: Router,
     private dialogRef: MatDialogRef<LoginComponent>,
     private estalogueadoService: EstalogueadoService
@@ -25,19 +26,20 @@ export class LoginComponent{
   })
 
   onSubmit(){
+    console.log("onSubmit ");
     if (this.estalogueadoService.loguear(this.usuario, this.password)){
       /*alert("Acceso correcto");*/
       console.log(this.usuarioLogin.value);
-      this.estalogueadoService.logear(this.usuario);
       this.router.navigate(['']);
-      this.dialogRef.close(); 
+      this.dialogRef.close();
     }else{
       alert("Acceso denegado");
       console.log(this.usuarioLogin.value);
       this.estalogueadoService.salir();
       this.router.navigate(['']);
-      this.dialogRef.close(); 
+      this.dialogRef.close();
     }
+    console.log("onSubmit 12");
   }
 
 }

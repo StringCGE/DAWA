@@ -20,6 +20,7 @@ export class AppComponent {
     }else{
       this.logueado = 'no';
     }*/
+    this.estalogueadoService.salir();
   }
   ngOnInit() {
     this.estalogueadoService.change.subscribe(estalogueadoService => {

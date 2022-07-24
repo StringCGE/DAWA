@@ -11,22 +11,22 @@
             <h1 class = "parrafo">Descubre las gangas más vendidas de las últimas 24 horas y hazte con tu artículo de marca favorito antes de que lo hagan otros. Ya sabes: ¡solo hasta fin de existencias!</h1>
         </div>
         
-        <div class="cuadricula-juegos" *ngFor="let itemoferta of lItemRopa; let i = index">
+        <div class="cuadricula-juegos">
 
-            <div class="cuadricula" id="itemoferta.id">
+            <div class="cuadricula" id="itemoferta.id" *ngFor="let itemoferta of lItemRopa; let i = index">
                 <div class="imagen-card">
                     <img class="img-cuadricula" [src]="itemoferta.srcimg" alt="camisa-rm">
                 </div>
 
                 <div class="informacion">
-                    <h2>{{itemoferta.nombre}} {{itemoferta.codigo}}</h2>          
+                    <h2>{{itemoferta.nombre}} {{itemoferta.codigo}}</h2>
                 </div>
                 <div class="footer-box">
                     <div class="box-precio">
                         <span class="precio1"><em>{{itemoferta.precio}}</em></span>
                         <span class="precio2"><b>{{itemoferta.preciooferta}}</b></span>
                     </div>
-                    <button mat-raised-button color="primary" (click)="openDialogAgregar(itemoferta)">Comprar</button>
+                    <button mat-raised-button color="primary" (click)="AgregarCarrito(itemoferta)">Comprar</button>
                 </div>
             </div>
 

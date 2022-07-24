@@ -24,7 +24,7 @@ export class EstalogueadoService {
   public estado() : boolean {
     return this.estalogueado;
   }
-  constructor() { 
+  constructor() {
     this.estalogueado = false;
   }
 }
