@@ -48,7 +48,8 @@ export class ApiService {
             itemr.precio,
             itemr.stock,
             itemr.srcimg,
-            itemrc.cantidad
+            itemrc.cantidad,
+            itemr.codigo
           ));
         }
       });
