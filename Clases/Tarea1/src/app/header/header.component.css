@@ -2,6 +2,11 @@ mat-toolbar {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+        background: #1E5128;
+        color: #000;
+    height: 50px;
+  
+     
 }
 
 .example-spacer {
