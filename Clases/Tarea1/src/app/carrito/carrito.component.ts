@@ -20,7 +20,7 @@ export class CarritoComponent implements OnInit {
   dataSource: any = [];
   displayedColumns: string[] = ['id','img', 'nombre', 'precio','cantidad','suma','opciones']
   data: ItemRopa[];
-  
+  suma:number;
   nuevoNovedades:any;
   nav: any;
 
@@ -74,9 +74,16 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<ItemRopa>(this.data as ItemRopa[]);
+    this.actualizarSuma();
     console.log(this.data);
   }
 
+  actualizarSuma(){
+    this.suma = 0;
+    this.data.forEach(element => {
+      this.suma += element.cantidad * element.precio;
+    });
+  }
   openDialogAgregar(){
     // this.dialog.open(AgregarNovedadesComponent, {
     //   width: '50%',
