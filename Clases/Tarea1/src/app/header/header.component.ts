@@ -13,10 +13,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private dialog:MatDialog, private router: Router) { }
 
-  openDialogSesion(){
-    this.dialog.open(LoginComponent)
-  }
-
   openOfertas(){
     this.router.navigate(['/ofertas']);
   }
@@ -39,6 +35,10 @@ export class HeaderComponent implements OnInit {
 
   openCarrito(){
     this.router.navigate(['/carrito']);
+  }
+
+  openDialogSesion(){
+    this.dialog.open(LoginComponent)
   }
 
   ngOnInit(): void {

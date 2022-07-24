@@ -25,8 +25,8 @@ export class LoginComponent{
   })
 
   onSubmit(){
-    if (this.usuario =='admin' && this.password =='admin'){
-      alert("Acceso correcto");
+    if (this.estalogueadoService.loguear(this.usuario, this.password)){
+      /*alert("Acceso correcto");*/
       console.log(this.usuarioLogin.value);
       this.estalogueadoService.logear(this.usuario);
       this.router.navigate(['']);

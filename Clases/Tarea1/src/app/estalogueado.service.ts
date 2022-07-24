@@ -7,10 +7,12 @@ export class EstalogueadoService {
   private estalogueado = false;
   @Output() change: EventEmitter<EstalogueadoService> = new EventEmitter();
   public usuario = "";
-  public logear(usuario : string){
+
+  public loguear(usuario : string, psw: string) : boolean {
     this.usuario = usuario;
     this.estalogueado = true;
     this.evento();
+    return true;
   }
   public salir(){
     this.estalogueado = false;
