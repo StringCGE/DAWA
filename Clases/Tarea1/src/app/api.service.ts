@@ -8,7 +8,8 @@ import { ItemRopa } from './clase/item-ropa'
   providedIn: 'root'
 })
 export class ApiService {
-  @Output() change: EventEmitter<ApiService> = new EventEmitter();
+  @Output() cambioHombre: EventEmitter<ApiService> = new EventEmitter();
+  @Output() cambioCarrito: EventEmitter<ApiService> = new EventEmitter();
   constructor() { }
   protected lItemRopaCarrito:ItemRopaCarrito[] = [];
   protected lItemRopa:ItemRopa[] = [
@@ -36,20 +37,43 @@ export class ApiService {
   public Hombre_GetItems() : ItemRopa[]{
     return this.lItemRopa;
   }
-
-  private evento(){
-    this.change.emit(this);
+  public CarritoItemRopa_GetItems() : ItemRopa[]{
+    let l: ItemRopa[] = [];
+    this.lItemRopaCarrito.forEach((itemrc)=>{
+      this.lItemRopa.forEach((itemr)=>{
+        if(itemr.id == itemrc.id){
+          l.push(new ItemRopa(
+            itemr.id,
+            itemr.nombre,
+            itemr.precio,
+            itemr.stock,
+            itemr.srcimg,
+            itemrc.cantidad
+          ));
+        }
+      });
+    });
+    return l;
+  }
+  public Carrito_GetItems() : ItemRopaCarrito[]{
+    return this.lItemRopaCarrito;
+  }
+  private eventoHombre(){
+    this.cambioHombre.emit(this);
+  }
+  private eventoCarrito(){
+    this.cambioCarrito.emit(this);
   }
 
   public AñadirItemCarrito(ir:ItemRopaCarritoInterface){
     this.lItemRopaCarrito.push(ir);
-    this.evento();
+    this.eventoCarrito();
     console.log("Añadir a carrito");
     console.log(this.lItemRopa);
   }
   public EliminarItemCarrito(ir:ItemRopaCarritoInterface){
     this.remove(ir);
-    this.evento();
+    this.eventoCarrito();
     console.log("Eliminar de carrito");
     console.log(this.lItemRopa);
   }

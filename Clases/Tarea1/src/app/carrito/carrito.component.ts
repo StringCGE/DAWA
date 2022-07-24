@@ -7,7 +7,10 @@ import { AgregarNovedadesComponent } from '../agregar-novedades/agregar-novedade
 import { NovedadesInterface } from '../interfaces/NovedadesInterface';
 import { ModificarNovedadesComponent} from "../modificar-novedades/modificar-novedades.component";
 import { Novedades} from "../Novedades";
-import { ItemRopa } from '../clase/item-ropa'
+import { ApiService } from '../api.service';
+import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
+import { ItemRopa } from '../clase/item-ropa';
+import { ItemRopaCarritoInterface } from '../interfaces/item-ropa-carrito-interface';
 
 @Component({
   selector: 'app-carrito',
@@ -19,32 +22,33 @@ export class CarritoComponent implements OnInit {
 
   dataSource: any = [];
   displayedColumns: string[] = ['id','img', 'nombre', 'precio','cantidad','suma','opciones']
+  dataCarrito: ItemRopaCarrito[];
   data: ItemRopa[];
   suma:number;
   nuevoNovedades:any;
   nav: any;
 
-  constructor(private router: Router, private dialog:MatDialog) { 
+  constructor(private router: Router, private dialog:MatDialog, private apiService: ApiService) { 
     
     /*this.data = [{
-      id: '1',      
-      marca: 'Nike',
-      descripcion: 'Nike lanza los zapatos deportivos Mambacita Sweet 16 en homenaje a Gianna Bryant por su cumpleaños.',
-      anio: 2022
-    }
-  ];*/
-  this.data = [
-    {id:1, nombre:"Gracias",precio:29.00, stock:13, srcimg:"../../assets/img/seccion-hombre/item_01.jpg", cantidad:13},
-    {id:2, nombre:"Roopa",  precio:35.50, stock:22, srcimg:"../../assets/img/seccion-hombre/item_02.jpg", cantidad:22},
-    {id:3, nombre:"Roopa",  precio:59.99, stock:145,srcimg:"../../assets/img/seccion-hombre/item_03.jpg", cantidad:145},
-    {id:4, nombre:"Roopa",  precio:45.00, stock:48, srcimg:"../../assets/img/seccion-hombre/item_04.jpg", cantidad:48},
-    {id:5, nombre:"Roopa",  precio:35.99, stock:74, srcimg:"../../assets/img/seccion-hombre/item_05.jpg", cantidad:74},
-    {id:6, nombre:"Roopa",  precio:25.99, stock:62, srcimg:"../../assets/img/seccion-hombre/item_06.jpg", cantidad:62},
-    {id:7, nombre:"Roopa",  precio:15.99, stock:50, srcimg:"../../assets/img/seccion-hombre/item_07.jpg", cantidad:50},
-    {id:8, nombre:"Roopa",  precio:5.99,  stock:70, srcimg:"../../assets/img/seccion-hombre/item_08.jpg", cantidad:70},
-    {id:9, nombre:"Roopa",  precio:0.99,  stock:28, srcimg:"../../assets/img/seccion-hombre/item_09.jpg", cantidad:28},
-    {id:10,nombre:"Roopa",  precio:0.09,  stock:80, srcimg:"../../assets/img/seccion-hombre/item_10.jpg", cantidad:80}
-  ];
+        id: '1',      
+        marca: 'Nike',
+        descripcion: 'Nike lanza los zapatos deportivos Mambacita Sweet 16 en homenaje a Gianna Bryant por su cumpleaños.',
+        anio: 2022
+      }
+    ];*/
+    // this.data = [
+    //   new ItemRopa(1,"Gracias",29.00,13,"../../assets/img/seccion-hombre/item_01.jpg",13),
+    //   new ItemRopa(2,"Roopa",35.50,22,"../../assets/img/seccion-hombre/item_02.jpg",22),
+    //   new ItemRopa(3,"Roopa",59.99,145,"../../assets/img/seccion-hombre/item_03.jpg",145),
+    //   new ItemRopa(4,"Roopa",45.00,48,"../../assets/img/seccion-hombre/item_04.jpg",48),
+    //   new ItemRopa(5,"Roopa",35.99,74,"../../assets/img/seccion-hombre/item_05.jpg",74),
+    //   new ItemRopa(6,"Roopa",25.99,62,"../../assets/img/seccion-hombre/item_06.jpg",62),
+    //   new ItemRopa(7,"Roopa",15.99,50,"../../assets/img/seccion-hombre/item_07.jpg",50),
+    //   new ItemRopa(8,"Roopa",5.99,70,"../../assets/img/seccion-hombre/item_08.jpg",70),
+    //   new ItemRopa(9,"Roopa",0.99,28,"../../assets/img/seccion-hombre/item_09.jpg",28),
+    //   new ItemRopa(10,"Roopa",0.09,80,"../../assets/img/seccion-hombre/item_10.jpg",80)
+    // ];
     // this.nav = this.router.getCurrentNavigation();
     // this.nuevoNovedades = this.nav.extras.state;
   
@@ -73,11 +77,22 @@ export class CarritoComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.actualizarDataSource();
+    
+    console.log(this.data);
+
+    // this.apiService.cambioHombre.subscribe(apiService => {
+    //   this.actualizarDataSource();
+    // });
+    this.apiService.cambioCarrito.subscribe(apiService => {
+      this.actualizarDataSource();
+    });
+  }
+  actualizarDataSource(){
+    this.data = this.apiService.CarritoItemRopa_GetItems();
     this.dataSource = new MatTableDataSource<ItemRopa>(this.data as ItemRopa[]);
     this.actualizarSuma();
-    console.log(this.data);
   }
-
   actualizarSuma(){
     this.suma = 0;
     this.data.forEach(element => {
@@ -90,19 +105,14 @@ export class CarritoComponent implements OnInit {
     // })
   }
 
-  openDialogModificar(nove:any){
-    // console.log("openDialog");
-    // this.dialog.open(ModificarNovedadesComponent, {
-    //   data:{
-    //     usuarioModificar: {
-    //       id: nove.id,
-    //       marca: nove.marca,
-    //       descripcion: nove.descripcion,
-    //       anio: nove.anio
-    //     }
-    //   },
-    //   width: '50%',
-    // })
+  openDialogEliminar(value:ItemRopa){
+
+    let ic : ItemRopaCarritoInterface;
+    ic = new ItemRopaCarrito();
+
+    ic.id = value.id;
+    ic.cantidad = value.cantidad;
+    this.apiService.EliminarItemCarrito(ic);
   }
 
   buscarnovedades($event: any){
