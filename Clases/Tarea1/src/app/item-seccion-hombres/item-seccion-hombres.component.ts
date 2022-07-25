@@ -40,11 +40,10 @@ export class ItemSeccionHombresComponent implements OnInit {
     }else{
       this.openDialogSesion();
     }
-    
   }
 
   openDialogSesion(){
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent, {data:"hombre"})
   }
 
   EliminarCarrito(){

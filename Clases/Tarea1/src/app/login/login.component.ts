@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import { EstalogueadoService } from "../estalogueado.service";
 
@@ -14,23 +14,21 @@ export class LoginComponent{
   password:string;
 
   constructor(
-    private cdRef: ChangeDetectorRef,
-    private router: Router,
     private dialogRef: MatDialogRef<LoginComponent>,
+    @ Inject(MAT_DIALOG_DATA) public dir:string,
+    private router: Router,
     private estalogueadoService: EstalogueadoService
   ) { }
-
   usuarioLogin = new FormGroup({
     usuario: new FormControl('',Validators.required),
     password: new FormControl('', Validators.required)   
   })
 
   onSubmit(){
-    console.log("onSubmit ");
     if (this.estalogueadoService.loguear(this.usuario, this.password)){
-      /*alert("Acceso correcto");*/
+      alert("Acceso correcto");
       console.log(this.usuarioLogin.value);
-      this.router.navigate(['']);
+      this.router.navigate([this.dir]);
       this.dialogRef.close();
     }else{
       alert("Acceso denegado");
@@ -39,7 +37,6 @@ export class LoginComponent{
       this.router.navigate(['']);
       this.dialogRef.close();
     }
-    console.log("onSubmit 12");
   }
 
 }

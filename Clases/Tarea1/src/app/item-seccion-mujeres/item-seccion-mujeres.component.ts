@@ -44,7 +44,7 @@ export class ItemSeccionMujeresComponent implements OnInit {
   }
 
   openDialogSesion(){
-    this.dialog.open(LoginComponent)
+    const dialogo1 = this.dialog.open(LoginComponent, {data:"mujer"});
   }
 
   EliminarCarrito(){

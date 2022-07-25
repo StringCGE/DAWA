@@ -39,11 +39,10 @@ export class OfertasComponent implements OnInit {
     }else{
       this.openDialogSesion();
     }
-    
   }
 
   openDialogSesion(){
-    this.dialog.open(LoginComponent)
+    const dialogo1 = this.dialog.open(LoginComponent, {data:"ofertas"});
   }
 
 }

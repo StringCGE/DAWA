@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openDialogSesion(){
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent,{data:""});
   }
 
   ngOnInit(): void {

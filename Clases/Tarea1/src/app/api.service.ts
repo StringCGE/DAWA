@@ -150,9 +150,8 @@ export class ApiService {
     if(!bo){
       this.lItemRopaCarrito.push(ir);
     }
+    alert("Añadido al carrito");
     this.eventoCarrito();
-    console.log("Añadir a carrito");
-    console.log(this.lItemRopa);
   }
   public EliminarItemCarrito(ir:ItemRopaCarritoInterface){
     this.remove(ir);
