@@ -5,7 +5,7 @@
             <mat-form-field apparence="fill">
                 <input matInput placeholder="Buscar" autocomplete="off" (keyup)="buscarnovedades($event)">
             </mat-form-field>
-            <span>La suma d su compra es: {{suma  | currency:'USD':true:'1.2-2'}}</span>
+            <span>La suma de su compra es: {{suma  | currency:'USD':true:'1.2-2'}}</span>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef width ="10%"> Id </th>
