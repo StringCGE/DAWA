@@ -13,33 +13,35 @@ export class ApiService {
   @Output() cambioOferta: EventEmitter<ApiService> = new EventEmitter();
   @Output() cambioColeccion: EventEmitter<ApiService> = new EventEmitter();
   @Output() cambioCarrito: EventEmitter<ApiService> = new EventEmitter();
-  constructor() { }
+  constructor() { 
+    console.log("ApiService.constructor");
+  }
   protected lItemRopaCarrito:ItemRopaCarrito[] = [];
   protected lItemRopa:ItemRopa[] = [
-    new ItemRopa(1,"Alpha Industries Chaqueta",29.00,13,"../../assets/img/seccion-hombre/item_01.jpg",13),
-    new ItemRopa(2,"Chaqueta Vaquera Slim",35.50,22,"../../assets/img/seccion-hombre/item_02.jpg",22),
-    new ItemRopa(3,"Chaqueta de cuero para hombre",59.99,145,"../../assets/img/seccion-hombre/item_03.jpg",145),
-    new ItemRopa(4,"Camiseta deportiva Vans",45.00,48,"../../assets/img/seccion-hombre/item_04.jpg",48),
-    new ItemRopa(5,"Buzo deportiva para caballero",35.99,74,"../../assets/img/seccion-hombre/item_05.jpg",74),
-    new ItemRopa(6,"Camiseta Jogger para hombres",25.99,62,"../../assets/img/seccion-hombre/item_06.jpg",62),
-    new ItemRopa(7,"Chaqueta Street Style",15.99,50,"../../assets/img/seccion-hombre/item_07.jpg",50),
-    new ItemRopa(8,"Camiseta Vans Casual para hombre",5.99,70,"../../assets/img/seccion-hombre/item_08.jpg",70),
-    new ItemRopa(9,"Jeans Vaqueros",0.99,28,"../../assets/img/seccion-hombre/item_09.jpg",28),
-    new ItemRopa(10,"Next Level camisa mangas cortas",0.09,80,"../../assets/img/seccion-hombre/item_10.jpg",80)
+    new ItemRopa(1,"Alpha Industries Chaqueta",29.00,13,"assets/img/seccion-hombre/item_01.jpg",13),
+    new ItemRopa(2,"Chaqueta Vaquera Slim",35.50,22,"assets/img/seccion-hombre/item_02.jpg",22),
+    new ItemRopa(3,"Chaqueta de cuero para hombre",59.99,145,"assets/img/seccion-hombre/item_03.jpg",145),
+    new ItemRopa(4,"Camiseta deportiva Vans",45.00,48,"assets/img/seccion-hombre/item_04.jpg",48),
+    new ItemRopa(5,"Buzo deportiva para caballero",35.99,74,"assets/img/seccion-hombre/item_05.jpg",74),
+    new ItemRopa(6,"Camiseta Jogger para hombres",25.99,62,"assets/img/seccion-hombre/item_06.jpg",62),
+    new ItemRopa(7,"Chaqueta Street Style",15.99,50,"assets/img/seccion-hombre/item_07.jpg",50),
+    new ItemRopa(8,"Camiseta Vans Casual para hombre",5.99,70,"assets/img/seccion-hombre/item_08.jpg",70),
+    new ItemRopa(9,"Jeans Vaqueros",0.99,28,"assets/img/seccion-hombre/item_09.jpg",28),
+    new ItemRopa(10,"Next Level camisa mangas cortas",0.09,80,"assets/img/seccion-hombre/item_10.jpg",80)
   ];
   protected lItemRopaMujer:ItemRopa[] = [
-    new ItemRopa(6001,"Calentador",23.00,20,"../../assets/img/seccion-mujer/item_01.png",13),
-    new ItemRopa(6002,"Chompa",40.99,10,"../../assets/img/seccion-mujer/item_02.png",22),
-    new ItemRopa(6003,"Calentador",30.00,20,"../../assets/img/seccion-mujer/item_03.png",145),
-    new ItemRopa(6004,"Abrigo",50.00,48,"../../assets/img/seccion-mujer/item_04.png",48),
-    new ItemRopa(6005,"Camisa de la seleccion",60.99,120,"../../assets/img/seccion-mujer/item_05.png",74),
-    new ItemRopa(6006,"Chompa",30.00,24,"../../assets/img/seccion-mujer/item_06.png",62),
-    new ItemRopa(6007,"Camisa Barcelona",15.99,35,"../../assets/img/seccion-mujer/item_07.png",50),
-    new ItemRopa(6008,"Camisa",15.99,60,"../../assets/img/seccion-mujer/item_08.png",70),
-    new ItemRopa(6009,"Calentador",25.50,10,"../../assets/img/seccion-mujer/item_09.png",28),
-    new ItemRopa(6010,"Chompa",35.99,12,"../../assets/img/seccion-mujer/item_10.png",80),
-    new ItemRopa(6011,"Chompa",25.50,10,"../../assets/img/seccion-mujer/item_11.png",28),
-    new ItemRopa(6012,"Short",35.99,12,"../../assets/img/seccion-mujer/item_12.png",80)
+    new ItemRopa(6001,"Calentador",23.00,20,"assets/img/seccion-mujer/item_01.png",13),
+    new ItemRopa(6002,"Chompa",40.99,10,"assets/img/seccion-mujer/item_02.png",22),
+    new ItemRopa(6003,"Calentador",30.00,20,"assets/img/seccion-mujer/item_03.png",145),
+    new ItemRopa(6004,"Abrigo",50.00,48,"assets/img/seccion-mujer/item_04.png",48),
+    new ItemRopa(6005,"Camisa de la seleccion",60.99,120,"assets/img/seccion-mujer/item_05.png",74),
+    new ItemRopa(6006,"Chompa",30.00,24,"assets/img/seccion-mujer/item_06.png",62),
+    new ItemRopa(6007,"Camisa Barcelona",15.99,35,"assets/img/seccion-mujer/item_07.png",50),
+    new ItemRopa(6008,"Camisa",15.99,60,"assets/img/seccion-mujer/item_08.png",70),
+    new ItemRopa(6009,"Calentador",25.50,10,"assets/img/seccion-mujer/item_09.png",28),
+    new ItemRopa(6010,"Chompa",35.99,12,"assets/img/seccion-mujer/item_10.png",80),
+    new ItemRopa(6011,"Chompa",25.50,10,"assets/img/seccion-mujer/item_11.png",28),
+    new ItemRopa(6012,"Short",35.99,12,"assets/img/seccion-mujer/item_12.png",80)
   ];
   protected lItemRopaOferta:ItemRopa[] = [
     new ItemRopa(101,"Real Madrid C.F. adidas Camiseta de entrenamiento para Hombres",41.00,30,"assets/img/camisa-rm.jpg",0,"GR4324",29),
