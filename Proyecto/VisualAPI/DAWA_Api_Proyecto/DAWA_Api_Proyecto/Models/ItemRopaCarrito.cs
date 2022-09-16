@@ -7,10 +7,10 @@ namespace DAWA_Api_Proyecto.Models
         {
             Init();
         }
-        public ItemRopaCarrito(int id, int cantidad)
+        public ItemRopaCarrito(int Id, int Cantidad)
         {
-            this.id = id;
-            this.cantidad = cantidad;
+            this.Id = Id;
+            this.Cantidad = Cantidad;
             Init();
         }
         protected void Init()
@@ -18,8 +18,8 @@ namespace DAWA_Api_Proyecto.Models
 
         }
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public int cantidad { get; set; }
+        public int Cantidad { get; set; }
     }
 }

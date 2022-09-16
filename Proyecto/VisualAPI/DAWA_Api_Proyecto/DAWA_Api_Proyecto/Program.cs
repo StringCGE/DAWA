@@ -1,5 +1,11 @@
 using DAWA_Api_Proyecto.Data;
+using System.Text;
+
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +32,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(
         /*builder.Configuration.GetConnectionString("DefaultConnection")*/
         )
 );
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("default", x =>
+    {
+        x.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 /*
 intente reproducir el error
     System.InvalidOperationException: There is already an open DataReader associated with this Connection which must be closed first
