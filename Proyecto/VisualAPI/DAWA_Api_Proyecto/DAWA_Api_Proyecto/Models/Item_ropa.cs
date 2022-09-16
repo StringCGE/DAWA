@@ -4,6 +4,10 @@ namespace DAWA_Api_Proyecto.Models
 {
     public class Item_ropa
     {
+        public Item_ropa()
+        {
+            Init();
+        }
         public Item_ropa(int id, string? nombre, int precio, int stock, string? srcImg, int cantidad, string? codigo, int preciooferta, string? detalle)
         {
             Id = id;
@@ -15,8 +19,12 @@ namespace DAWA_Api_Proyecto.Models
             Codigo = codigo;
             Preciooferta = preciooferta;
             Detalle = detalle;
+            Init();
         }
-
+        protected void Init()
+        {
+            
+        }
         [Key]
         public int Id { get; set; }
         [Required]
