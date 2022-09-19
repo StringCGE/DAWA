@@ -7,7 +7,8 @@ namespace DAWA_Api_Proyecto.Models
         {
 
         }
-        public Usuario(int id, string? cedula, string? nombres, string? apellidos, string? direccion, int edad, string? email, string? psw, string? roll)
+
+        public Usuario(int id, string? cedula, string? nombres, string? apellidos, string? direccion, int edad, string? email, string? psw, string? roll, int eliminado)
         {
             Id = id;
             Cedula = cedula;
@@ -18,7 +19,9 @@ namespace DAWA_Api_Proyecto.Models
             Email = email;
             Psw = psw;
             Roll = roll;
+            Eliminado = eliminado;
         }
+
         protected void Init()
         {
 
@@ -41,6 +44,8 @@ namespace DAWA_Api_Proyecto.Models
         public string? Psw { get; set; }
         [Required]
         public string? Roll { get; set; }
+        [Required]
+        public int Eliminado { get; set; }
 
     }
 }

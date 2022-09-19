@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-
+using DAWA_Api_Proyecto.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +32,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(
         /*builder.Configuration.GetConnectionString("DefaultConnection")*/
         )
 );
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+      .AddJwtBearer(options => options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+      {
+          ValidateIssuer = false,
+          ValidateAudience = false,
+          ValidateLifetime = true,
+          ValidateIssuerSigningKey = true,
+          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthController.Llave)),
+          ClockSkew = System.TimeSpan.Zero
+      });
+
+//builder.WebHost.ConfigureKestrel(
+//    options => {
+//        options.ListenAnyIP(2000);
+//        options.ListenAnyIP(2010);
+//    }
+//);
+//builder.WebHost.UseUrls("https://*:2080", "http://*:2443");
+//builder.WebHost.UseUrls("http://*:2443");
 
 builder.Services.AddCors(options =>
 {
@@ -73,9 +93,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
+app.UseCors();
 app.MapControllers();
-
 app.Run();

@@ -22,31 +22,34 @@ namespace DAWA_Api_Proyecto.Controllers
         {
             _context = context;
         }
-
+        public delegate void mifuncion();
         // GET: api/Item_ropa
         [HttpGet]
         [EnableQuery]
         public async Task<ActionResult<IEnumerable<Item_ropa>>> GetItem_ropas()
         {
+            
+
+            //Este return es el original
             if (_context.Item_ropas == null)
             {
                 return NotFound();
             }
-            return await _context.Item_ropas.ToListAsync();
-            //List<Item_ropa> l = new List<Item_ropa>();
-            //l.Add(new Item_ropa(25,"algo",15,20,"0xaaaa",45,"aaa",45,"detalle"));
-            //return await Task.Run(l.ToArray());
+            var brandItems = await _context.CatalogBrands
 
-    //        var brandItems = await _context.CatalogBrands
-    //.Where(b => b.Enabled)
-    //.OrderBy(b => b.Name)
-    //.Select(b => new SelectListItem
-    //{
-    //    Value = b.Id,
-    //    Text = b.Name
-    //})
-    //.ToListAsync();
+
+            //.Where(b => b.Enabled)
+            //.OrderBy(b => b.Name)
+            //.Select(b => new SelectListItem
+            //{
+            //    Value = b.Id,
+            //    Text = b.Name
+            //})
+            //.ToListAsync();
+            //return await _context.Item_ropas.ToListAsync();
         }
+
+
 
         // GET: api/Item_ropa/5
         [HttpGet("{id}")]

@@ -7,12 +7,14 @@ namespace DAWA_Api_Proyecto.Models
         {
             Init();
         }
-        public ItemRopaCarrito(int Id, int Cantidad)
+
+        public ItemRopaCarrito(int id, int cantidad, Factura? factura)
         {
-            this.Id = Id;
-            this.Cantidad = Cantidad;
-            Init();
+            Id = id;
+            Cantidad = cantidad;
+            Factura = factura;
         }
+
         protected void Init()
         {
 
@@ -21,5 +23,7 @@ namespace DAWA_Api_Proyecto.Models
         public int Id { get; set; }
         [Required]
         public int Cantidad { get; set; }
+        [Required]
+        public Factura? Factura { get; set; }
     }
 }

@@ -8,19 +8,22 @@ namespace DAWA_Api_Proyecto.Models
         {
             Init();
         }
-        public Item_ropa(int id, string? nombre, int precio, int stock, string? srcImg, int cantidad, string? codigo, int preciooferta, string? detalle)
-        {
-            Id = id;
-            Nombre = nombre;
-            Precio = precio;
-            Stock = stock;
-            SrcImg = srcImg;
-            Cantidad = cantidad;
-            Codigo = codigo;
-            Preciooferta = preciooferta;
-            Detalle = detalle;
-            Init();
-        }
+
+        //public Item_ropa(int id, Grupo? grupo, string? nombre, double precio, int stock, string? srcImg, int cantidad, string? codigo, int preciooferta, string? detalle, int eliminado)
+        //{
+        //    Id = id;
+        //    Grupo = grupo;
+        //    Nombre = nombre;
+        //    Precio = precio;
+        //    Stock = stock;
+        //    SrcImg = srcImg;
+        //    Cantidad = cantidad;
+        //    Codigo = codigo;
+        //    Preciooferta = preciooferta;
+        //    Detalle = detalle;
+        //    Eliminado = eliminado;
+        //}
+
         protected void Init()
         {
             
@@ -28,9 +31,11 @@ namespace DAWA_Api_Proyecto.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public Grupo? Grupo { get; set; }
+        [Required]
         public string? Nombre { get; set; }
         [Required]
-        public int Precio { get; set; }
+        public double Precio { get; set; }
         [Required]
         public int Stock { get; set; }
         [Required]
@@ -43,6 +48,8 @@ namespace DAWA_Api_Proyecto.Models
         public int Preciooferta { get; set; }
         [Required]
         public string? Detalle { get; set; }
+        [Required]
+        public int Eliminado { get; set; }
 
 
 

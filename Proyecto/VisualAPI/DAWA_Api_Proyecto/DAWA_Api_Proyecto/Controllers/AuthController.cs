@@ -73,7 +73,7 @@ namespace DAWA_Api_Proyecto.Controllers
 
 
 
-        [HttpPost("login/")]
+        [HttpPost("login/{UsuaeioLoging}")]
         [AllowAnonymous]
         public async Task<ActionResult<Token>> Login([FromBody] UsuarioLogin ulog)
         {
@@ -106,7 +106,9 @@ namespace DAWA_Api_Proyecto.Controllers
         {
             return DBPsw == PSW;
         }
-        private string Llave = "EstaEsMillaveGeneradaAleatoriamente_SeSupone";
+
+        public static string Llave { get; set; } = "EstaEsMillaveGeneradaAleatoriamente_SeSupone";
+
         private ActionResult<Token> ValidarPassword(Usuario usuario, String psw)
         {
 

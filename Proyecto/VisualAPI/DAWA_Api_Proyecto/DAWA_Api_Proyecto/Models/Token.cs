@@ -1,4 +1,5 @@
-﻿namespace DAWA_Api_Proyecto.Models
+﻿using System.ComponentModel.DataAnnotations;
+namespace DAWA_Api_Proyecto.Models
 {
     public class Token
     {

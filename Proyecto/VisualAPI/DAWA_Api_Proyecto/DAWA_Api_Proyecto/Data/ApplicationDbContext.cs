@@ -25,10 +25,14 @@ namespace DAWA_Api_Proyecto.Data
         //    //.UseLoggerFactory(new LoggerFactory().AddConsole);
         //}
 
+        public DbSet<Factura> Facturas { get; set; } = null!;
+        public DbSet<Grupo> Grupos { get; set; } = null!;
         public DbSet<Item_ropa> Item_ropas { get; set; } = null!;
-        //public DbSet<Usuario>? Usuarios { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; } = null!;
         public DbSet<ItemRopaCarrito> ItemRopaCarritos { get; set; } = null!;
+        public DbSet<TokenDB> TokenDBs { get; set; } = null!;
+        public DbSet<Usuario> Usuarios { get; set; } = null!;
+        //public DbSet<Usuario>? Usuarios { get; set; }
+
 
     }
 }
