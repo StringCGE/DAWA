@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DAWA_Api_Proyecto.Models
 {
     public class ItemRopaCarrito
@@ -20,10 +22,26 @@ namespace DAWA_Api_Proyecto.Models
 
         }
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public int Cantidad { get; set; }
+        protected Factura? factura;
+        [ForeignKey("Facturaid"), Required]
+        public Factura? Factura {
+            get => factura; set
+            {
+                if (value != null)
+                {
+                    Facturaid = value.Id;
+                }
+                else
+                {
+                    Facturaid = 0;
+                }
+            }
+        }
         [Required]
-        public Factura? Factura { get; set; }
+        public int? Facturaid { get; set; }
     }
 }

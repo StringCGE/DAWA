@@ -1,5 +1,9 @@
 ﻿
 
+
+
+
+
 INSERT INTO USUARIOS (cedula, nombres, apellidos, direccion, edad, email, psw, roll, eliminado) VALUES ('0909090901', 'Christian Eduardo', 'Gonzalez', 'La calle y la que cruza', 27, 'eduardo.gonzaleze@ug.edu.ec', 'Christian', 'cliente', 0);
 INSERT INTO USUARIOS (cedula, nombres, apellidos, direccion, edad, email, psw, roll, eliminado) VALUES ('0909090902', 'Johann Donato', 'Lucio Vera', 'La calle y la que cruza', 23, 'johann.luciov@ug.edu.ec', 'Johann', 'cliente', 0);
 INSERT INTO USUARIOS (cedula, nombres, apellidos, direccion, edad, email, psw, roll, eliminado) VALUES ('0909090903', 'Dennis Orlando', 'Gutiérrez León', 'La calle y la que cruza', 22, 'dennis.gutierrezl@ug.edu.ec', 'Dennis', 'cliente', 0);

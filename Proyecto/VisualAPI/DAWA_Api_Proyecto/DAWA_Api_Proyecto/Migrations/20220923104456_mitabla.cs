@@ -91,15 +91,16 @@ namespace DAWA_Api_Proyecto.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Usuarioid = table.Column<int>(type: "int", nullable: false),
                     Eliminado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Facturas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Facturas_Usuarios_UsuarioId",
-                        column: x => x.UsuarioId,
+                        name: "FK_Facturas_Usuarios_Usuarioid",
+                        column: x => x.Usuarioid,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -112,23 +113,23 @@ namespace DAWA_Api_Proyecto.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cantidad = table.Column<int>(type: "int", nullable: false),
-                    FacturaId = table.Column<int>(type: "int", nullable: false)
+                    Facturaid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ItemRopaCarritos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItemRopaCarritos_Facturas_FacturaId",
-                        column: x => x.FacturaId,
+                        name: "FK_ItemRopaCarritos_Facturas_Facturaid",
+                        column: x => x.Facturaid,
                         principalTable: "Facturas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Facturas_UsuarioId",
+                name: "IX_Facturas_Usuarioid",
                 table: "Facturas",
-                column: "UsuarioId");
+                column: "Usuarioid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Item_ropas_Grupoid",
@@ -136,9 +137,9 @@ namespace DAWA_Api_Proyecto.Migrations
                 column: "Grupoid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemRopaCarritos_FacturaId",
+                name: "IX_ItemRopaCarritos_Facturaid",
                 table: "ItemRopaCarritos",
-                column: "FacturaId");
+                column: "Facturaid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DAWA_Api_Proyecto.Models
 {
     public class Grupo
@@ -17,6 +19,7 @@ namespace DAWA_Api_Proyecto.Models
         }
         
         [System.ComponentModel.DataAnnotations.Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public string? Nombre { get; set; }

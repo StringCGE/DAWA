@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using DAWA_Api_Proyecto.Data;
 using DAWA_Api_Proyecto.Models;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace DAWA_Api_Proyecto.Controllers
 {
@@ -25,10 +25,11 @@ namespace DAWA_Api_Proyecto.Controllers
     public class AuthController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public AuthController(ApplicationDbContext context)
+        private static string Llave { get; set; } = "EstaEsMillaveGeneradaAleatoriamente_SeSupone";
+        public AuthController(ApplicationDbContext context, IConfiguration config)
         {
             _context = context;
+            Llave = config.GetSection("settings").GetSection("secretkey").Value;
         }
 
         [HttpGet]
@@ -74,7 +75,6 @@ namespace DAWA_Api_Proyecto.Controllers
 
 
         [HttpPost("login")]
-        [AllowAnonymous]
         public async Task<ActionResult<Token>> Login(/*[FromBody]*/ UsuarioLogin ulog)
         {
             try
@@ -89,13 +89,13 @@ namespace DAWA_Api_Proyecto.Controllers
 
                     //busca por email del usuarios;
                     var _Usu = await _context.Usuarios
-                        .Where(u1 => ulog.Email.Trim().ToUpper().Equals(usuario))
+                        .Where(u1 => u1.Email.Trim().ToUpper().Equals(usuario))
                         .FirstOrDefaultAsync();
                     //var _Usu = await _context.Usuarios
                     //    .Where(u1 => WhereAlgo(u1, usuario))
                     //    .FirstOrDefaultAsync();
                     //
-                    if (string.IsNullOrWhiteSpace(ulog.Psw))
+                   if (string.IsNullOrWhiteSpace(ulog.Psw))
                     {
                         return Errror("Psw vacio");
                     }
@@ -126,7 +126,7 @@ namespace DAWA_Api_Proyecto.Controllers
             return DBPsw == PSW;
         }
 
-        public static string Llave { get; set; } = "EstaEsMillaveGeneradaAleatoriamente_SeSupone";
+        
 
         private ActionResult<Token> ValidarPassword(Usuario usuario, String psw)
         {
@@ -152,10 +152,14 @@ namespace DAWA_Api_Proyecto.Controllers
                     }
                     // Construimos el token y retornamos Claims
                     var arrayClaims = new Claim[] {
-                        new Claim(ClaimTypes.Email, usuario.Email),
-                        new Claim(ClaimTypes.Role, usuario.Roll),
-                        new Claim(ClaimTypes.Name, usuario.Nombres),
-                        new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
+                        //new Claim(ClaimTypes.Email, usuario.Email),
+                        //new Claim(ClaimTypes.Role, usuario.Roll),
+                        //new Claim(ClaimTypes.Name, usuario.Nombres),
+                        //new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
+                        new Claim("email", usuario.Email),
+                        new Claim("role", usuario.Roll),
+                        new Claim("name", usuario.Nombres),
+                        new Claim("id", usuario.Id.ToString())
                     };
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Llave));
                     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -167,6 +171,7 @@ namespace DAWA_Api_Proyecto.Controllers
                        claims: arrayClaims,
                        signingCredentials: creds
                     );
+                    //Acciones_de_login(usuario, _context);
                     return Ok(new Token(new JwtSecurityTokenHandler().WriteToken(token)));
                 }
                 else
@@ -179,6 +184,20 @@ namespace DAWA_Api_Proyecto.Controllers
                 return Nologin();
             }
         }
+        
+
+        //public async Task<ActionResult<Factura>> PostFactura(Factura Factura)
+        //{
+        //    if (_context.Facturas == null)
+        //    {
+        //        return Problem("Entity set 'ApplicationDbContext.Facturas'  is null.");
+        //    }
+        //    _context.Facturas.Add(Factura);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetFactura", new { id = Factura.Id }, Factura);
+        //}
+
         protected BadRequestObjectResult Errror(string msg)
         {
             return BadRequest("Error al iniciar sesion Debug " + msg);

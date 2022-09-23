@@ -34,8 +34,8 @@ namespace DAWA_Api_Proyecto.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [ForeignKey("GrupoId"), Required]
         protected Grupo? grupo;
+        [ForeignKey("Grupoid"), Required]
         public virtual Grupo? Grupo { get => grupo; set {
                 if (value != null) {
                     Grupoid = value.Id;
@@ -44,7 +44,8 @@ namespace DAWA_Api_Proyecto.Models
                 {
                     Grupoid = 0;
                 }
-            } }
+            }
+        }
         public int Grupoid { get; set; } = 0;
         [Required]
         public string? Nombre { get; set; }

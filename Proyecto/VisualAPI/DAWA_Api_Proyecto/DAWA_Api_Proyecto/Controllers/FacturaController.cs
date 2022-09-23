@@ -17,6 +17,36 @@ namespace DAWA_Api_Proyecto.Controllers
         {
             _context = context;
         }
+
+        [HttpPost("getProforma/{idusu}")]
+        public int Get_proforma_por_id_usuario(int idusu)
+        {
+            int idfactura = -1;
+            if (_context.Facturas is not null)
+            {
+                var _fac = _context.Facturas
+                        .Where(u1 => u1.Tipo == "proforma" && u1.Usuarioid == idusu)
+                        .OrderBy(x => x.Id)
+                        .LastOrDefault();
+                if (_fac is null)
+                {
+                    Factura factura = new Factura(0, idusu, "proforma", 0);
+                    _context.Facturas.Add(factura);
+                    //try
+                    //{
+                    _context.SaveChanges();
+                    //}
+                    //await _context.SaveChangesAsync();
+                    idfactura = factura.Id;
+                }
+                else
+                {
+                    idfactura = _fac.Id;
+                }
+            }
+            return idfactura;
+        }
+
         // GET: api/Factura
         [HttpGet]
         [EnableQuery]
@@ -80,7 +110,7 @@ namespace DAWA_Api_Proyecto.Controllers
 
         // POST: api/Factura
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        [HttpPost()]
         public async Task<ActionResult<Factura>> PostFactura(Factura Factura)
         {
             if (_context.Facturas == null)
