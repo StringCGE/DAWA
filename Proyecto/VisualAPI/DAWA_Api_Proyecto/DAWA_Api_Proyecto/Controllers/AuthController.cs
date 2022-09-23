@@ -73,21 +73,40 @@ namespace DAWA_Api_Proyecto.Controllers
 
 
 
-        [HttpPost("login/{UsuaeioLoging}")]
+        [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<Token>> Login([FromBody] UsuarioLogin ulog)
+        public async Task<ActionResult<Token>> Login(/*[FromBody]*/ UsuarioLogin ulog)
         {
             try
             {
-                string usuario = ulog.Email.Trim().ToUpper();
+                if (ulog is not null)
+                {
+                    if (string.IsNullOrWhiteSpace(ulog.Email))
+                    {
+                        return Errror("Email vacio");
+                    }
+                    string usuario = ulog.Email.Trim().ToUpper();
 
-                //busca por email del usuarios;
-                var _Usu = await _context.Usuarios
-                    .Where(u1 => u1.Email.Trim().ToUpper().Equals(usuario))
-                    .FirstOrDefaultAsync();
-
-                if (_Usu != null) { return ValidarPassword(_Usu, ulog.Psw); }
-                else { return BadRequest("Credenciales inválidas!"); }
+                    //busca por email del usuarios;
+                    var _Usu = await _context.Usuarios
+                        .Where(u1 => ulog.Email.Trim().ToUpper().Equals(usuario))
+                        .FirstOrDefaultAsync();
+                    //var _Usu = await _context.Usuarios
+                    //    .Where(u1 => WhereAlgo(u1, usuario))
+                    //    .FirstOrDefaultAsync();
+                    //
+                    if (string.IsNullOrWhiteSpace(ulog.Psw))
+                    {
+                        return Errror("Psw vacio");
+                    }
+                    if (_Usu != null) { return ValidarPassword(_Usu, ulog.Psw); }
+                    else { return BadRequest("Credenciales inválidas!"); }
+                }
+                else
+                {
+                    return BadRequest("Variable Login fue null");
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -95,12 +114,12 @@ namespace DAWA_Api_Proyecto.Controllers
             }
         }
 
-        [HttpPost("generar_hash/{valor}")]
-        [AllowAnonymous]
-        public ActionResult<string> GetHASh____(string valor)
-        {
-            return null;//APIParameters.Encript(valor, APIParameters.Salt);
-        }
+        //[HttpPost("generar_hash/{valor}")]
+        //[AllowAnonymous]
+        //public ActionResult<string> GetHASh____(string valor)
+        //{
+        //    return null;//APIParameters.Encript(valor, APIParameters.Salt);
+        //}
 
         private Boolean ComparePsw(string DBPsw, String PSW)
         {
@@ -111,38 +130,59 @@ namespace DAWA_Api_Proyecto.Controllers
 
         private ActionResult<Token> ValidarPassword(Usuario usuario, String psw)
         {
-
-            if (ComparePsw(usuario.Psw, psw))
+            if (usuario is not null)
             {
-                // Construimos el token y retornamos Claims
-
-                var arrayClaims = new Claim[] {
-                    new Claim(ClaimTypes.Email, usuario.Email),
-                    new Claim(ClaimTypes.Role, usuario.Roll),
-                    new Claim(ClaimTypes.Name, usuario.Nombres),
-                    new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
-                };
-
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Llave));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var expiration = DateTime.UtcNow.AddHours(1);
-                JwtSecurityToken token = new(
-                   issuer: usuario.Nombres,
-                   audience: null,
-                   expires: expiration,
-                   claims: arrayClaims,
-                   signingCredentials: creds
-                );
-
-                return new Token(new JwtSecurityTokenHandler().WriteToken(token));
+                if (string.IsNullOrWhiteSpace(usuario.Psw))
+                {
+                    return Errror("Psw vacio");
+                }
+                if (ComparePsw(usuario.Psw, psw))
+                {
+                    if (string.IsNullOrWhiteSpace(usuario.Email))
+                    {
+                        return Errror("Email vacio");
+                    }
+                    if (string.IsNullOrWhiteSpace(usuario.Roll))
+                    {
+                        return Errror("Roll vacio");
+                    }
+                    if (string.IsNullOrWhiteSpace(usuario.Nombres))
+                    {
+                        return Errror("Nombres vacio");
+                    }
+                    // Construimos el token y retornamos Claims
+                    var arrayClaims = new Claim[] {
+                        new Claim(ClaimTypes.Email, usuario.Email),
+                        new Claim(ClaimTypes.Role, usuario.Roll),
+                        new Claim(ClaimTypes.Name, usuario.Nombres),
+                        new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
+                    };
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Llave));
+                    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var expiration = DateTime.UtcNow.AddHours(1);
+                    JwtSecurityToken token = new(
+                       issuer: usuario.Nombres,
+                       audience: null,
+                       expires: expiration,
+                       claims: arrayClaims,
+                       signingCredentials: creds
+                    );
+                    return Ok(new Token(new JwtSecurityTokenHandler().WriteToken(token)));
+                }
+                else
+                {
+                    return Nologin();
+                }
             }
             else
             {
                 return Nologin();
             }
-
         }
-
+        protected BadRequestObjectResult Errror(string msg)
+        {
+            return BadRequest("Error al iniciar sesion Debug " + msg);
+        }
         protected BadRequestObjectResult Nologin()
         {
             return BadRequest("Error al iniciar sesion");
@@ -150,6 +190,22 @@ namespace DAWA_Api_Proyecto.Controllers
         protected BadRequestObjectResult Exception(Exception ex)
         {
             return BadRequest("Error en el servidor: " + ex);
+        }
+
+        protected Boolean WhereAlgo(Usuario ulog, string usuario)
+        {
+            if (ulog is not null)
+            {
+                if (string.IsNullOrWhiteSpace(ulog.Email))
+                {
+                    return false;
+                }
+                return ulog.Email.Trim().ToUpper().Equals(usuario);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

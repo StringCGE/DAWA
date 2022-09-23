@@ -266,3 +266,4 @@ E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\obj\Releas
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\obj\Release\net6.0\DAWA_Api_Proyecto.genruntimeconfig.cache
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\obj\Release\net6.0\ref\DAWA_Api_Proyecto.dll
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\DAWA_Api_Proyecto.staticwebassets.runtime.json

@@ -15,12 +15,14 @@ namespace DAWA_Api_Proyecto.Models
             Nombre = nombre;
             Eliminado = eliminado;
         }
-
-        [Key]
+        
+        [System.ComponentModel.DataAnnotations.Key]
         public int Id { get; set; }
         [Required]
         public string? Nombre { get; set; }
         [Required]
         public int Eliminado { get; set; }
+
+        //public virtual ICollection<Item_ropa>? Item_ropa { get; set; }
     }
 }

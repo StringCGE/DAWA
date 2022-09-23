@@ -84,7 +84,7 @@ namespace DAWA_Api_Proyecto.Migrations
                     b.Property<int>("Eliminado")
                         .HasColumnType("int");
 
-                    b.Property<int>("GrupoId")
+                    b.Property<int>("Grupoid")
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -94,10 +94,10 @@ namespace DAWA_Api_Proyecto.Migrations
                     b.Property<double>("Precio")
                         .HasColumnType("float");
 
-                    b.Property<int>("Preciooferta")
-                        .HasColumnType("int");
+                    b.Property<double>("Preciooferta")
+                        .HasColumnType("float");
 
-                    b.Property<string>("SrcImg")
+                    b.Property<string>("Srcimg")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -106,7 +106,7 @@ namespace DAWA_Api_Proyecto.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GrupoId");
+                    b.HasIndex("Grupoid");
 
                     b.ToTable("Item_ropas");
                 });
@@ -214,7 +214,7 @@ namespace DAWA_Api_Proyecto.Migrations
                 {
                     b.HasOne("DAWA_Api_Proyecto.Models.Grupo", "Grupo")
                         .WithMany()
-                        .HasForeignKey("GrupoId")
+                        .HasForeignKey("Grupoid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

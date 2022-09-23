@@ -9,6 +9,7 @@ using DAWA_Api_Proyecto.Data;
 using DAWA_Api_Proyecto.Models;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json.Linq;
 
 namespace DAWA_Api_Proyecto.Controllers
 {
@@ -28,14 +29,16 @@ namespace DAWA_Api_Proyecto.Controllers
         [EnableQuery]
         public async Task<ActionResult<IEnumerable<Item_ropa>>> GetItem_ropas()
         {
-            
+            //List<Item_ropa> l = new List<Item_ropa>();
+            ////l.Add(new Item_ropa(20,new Grupo(),"_AA",20,20,"_image",20,"_veinte",20,"_detalle",0));
+            //return await TaskMiValor<Item_ropa>.Valor(l,this);
 
             //Este return es el original
             if (_context.Item_ropas == null)
             {
                 return NotFound();
             }
-            var brandItems = await _context.CatalogBrands
+            return await _context.Item_ropas.ToListAsync();
 
 
             //.Where(b => b.Enabled)
@@ -48,8 +51,6 @@ namespace DAWA_Api_Proyecto.Controllers
             //.ToListAsync();
             //return await _context.Item_ropas.ToListAsync();
         }
-
-
 
         // GET: api/Item_ropa/5
         [HttpGet("{id}")]
@@ -69,35 +70,67 @@ namespace DAWA_Api_Proyecto.Controllers
             return item_ropa;
         }
 
-        [HttpGet("algo/{id}")]
-        public async Task<ActionResult<Item_ropa>> GetAlgo(int id,string cedula)
+        // GET: api/Item_ropa/5
+        [HttpGet("porGrupo/{grupo}")]
+        public async Task<ActionResult<IEnumerable<Item_ropa>>> GetItem_ropa_PorGrupo(int grupo)
         {
-            /*busqueda anidada*/
+            //if (_context.Item_ropas == null)
+            //{
+            //    return NotFound();
+            //}
+            //var item_ropa = await _context.Item_ropas.FindAsync(id);
 
-            if (_context.Item_ropas == null)
-            {
-                return NotFound();
-            }
+            //if (item_ropa == null)
+            //{
+            //    return NotFound();
+            //}
+            //_context.Item_ropas.Where<Item_ropa>(x => x.GrupoId == grupo)
 
-            IQueryable<Item_ropa> query = _context.Item_ropas;
-            //query = query.Where(x => x.Id == id);
-            query = query.Where(x => x.Nombre.Contains("nombre"));
-            //query = query.Where(x => x.Nombre.StartsWith("nombre") || true);
-            if (query == null)
-            {
-                return NotFound();
-            }
+            //var v = _context.Item_ropas.FromSqlRaw("");
+            //var v2 = _context
+            //var _Usu = await _context.Item_ropas.Select(value => value.GrupoId == grupo);
 
-
-            var item_ropa = await _context.Item_ropas.FindAsync(id);
-
-            if (item_ropa == null)
-            {
-                return NotFound();
-            }
-
-            return item_ropa;
+            //var _Usu = await _context.Item_ropas
+            //            .Where(value => value.GrupoId == grupo)
+            //            .ToListAsync<Item_ropa>()
+            //            .AnyAsync<Item_ropa>();
+            
+            return await _context.Item_ropas
+                        .Where(value => value.Grupoid == grupo)
+                        .ToListAsync<Item_ropa>();
+            
+            
         }
+
+        //[HttpGet("algo/{id}")]
+        //public async Task<ActionResult<Item_ropa>> GetAlgo(int id,string cedula)
+        //{
+        //    /*busqueda anidada*/
+
+        //    if (_context.Item_ropas == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    IQueryable<Item_ropa> query = _context.Item_ropas;
+        //    //query = query.Where(x => x.Id == id);
+        //    query = query.Where(x => x.Nombre.Contains("nombre"));
+        //    //query = query.Where(x => x.Nombre.StartsWith("nombre") || true);
+        //    if (query == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+
+        //    var item_ropa = await _context.Item_ropas.FindAsync(id);
+
+        //    if (item_ropa == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return item_ropa;
+        //}
 
 
         // PUT: api/Item_ropa/5

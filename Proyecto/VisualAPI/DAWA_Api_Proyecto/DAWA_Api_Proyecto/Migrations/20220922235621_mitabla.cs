@@ -4,7 +4,7 @@
 
 namespace DAWA_Api_Proyecto.Migrations
 {
-    public partial class tablas : Migration
+    public partial class mitabla : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,14 +63,14 @@ namespace DAWA_Api_Proyecto.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GrupoId = table.Column<int>(type: "int", nullable: false),
+                    Grupoid = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Precio = table.Column<double>(type: "float", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
-                    SrcImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Srcimg = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cantidad = table.Column<int>(type: "int", nullable: false),
                     Codigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Preciooferta = table.Column<int>(type: "int", nullable: false),
+                    Preciooferta = table.Column<double>(type: "float", nullable: false),
                     Detalle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Eliminado = table.Column<int>(type: "int", nullable: false)
                 },
@@ -78,8 +78,8 @@ namespace DAWA_Api_Proyecto.Migrations
                 {
                     table.PrimaryKey("PK_Item_ropas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Item_ropas_Grupos_GrupoId",
-                        column: x => x.GrupoId,
+                        name: "FK_Item_ropas_Grupos_Grupoid",
+                        column: x => x.Grupoid,
                         principalTable: "Grupos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -131,9 +131,9 @@ namespace DAWA_Api_Proyecto.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Item_ropas_GrupoId",
+                name: "IX_Item_ropas_Grupoid",
                 table: "Item_ropas",
-                column: "GrupoId");
+                column: "Grupoid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItemRopaCarritos_FacturaId",
