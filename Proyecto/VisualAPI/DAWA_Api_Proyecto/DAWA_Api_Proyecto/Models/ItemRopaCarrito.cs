@@ -43,5 +43,24 @@ namespace DAWA_Api_Proyecto.Models
         }
         [Required]
         public int? Facturaid { get; set; }
+
+        [Required]
+        public int? Itemid { get; set; }
+        protected Item_ropa? item;
+        [ForeignKey("Itemid"), Required]
+        public Item_ropa? Item
+        {
+            get => item; set
+            {
+                if (value != null)
+                {
+                    Itemid = value.Id;
+                }
+                else
+                {
+                    Itemid = 0;
+                }
+            }
+        }
     }
 }

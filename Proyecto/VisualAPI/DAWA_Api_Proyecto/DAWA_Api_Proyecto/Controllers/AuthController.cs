@@ -89,7 +89,9 @@ namespace DAWA_Api_Proyecto.Controllers
 
                     //busca por email del usuarios;
                     var _Usu = await _context.Usuarios
-                        .Where(u1 => u1.Email.Trim().ToUpper().Equals(usuario))
+                        .Where(u1 =>
+                        u1.Email.Trim().ToUpper().Equals(usuario
+                        ))
                         .FirstOrDefaultAsync();
                     //var _Usu = await _context.Usuarios
                     //    .Where(u1 => WhereAlgo(u1, usuario))
@@ -99,8 +101,12 @@ namespace DAWA_Api_Proyecto.Controllers
                     {
                         return Errror("Psw vacio");
                     }
-                    if (_Usu != null) { return ValidarPassword(_Usu, ulog.Psw); }
-                    else { return BadRequest("Credenciales inválidas!"); }
+                    if (_Usu != null) {
+                        return ValidarPassword(_Usu, ulog.Psw); 
+                    }
+                    else { 
+                        return BadRequest("Credenciales inválidas!"); 
+                    }
                 }
                 else
                 {

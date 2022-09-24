@@ -132,9 +132,15 @@ namespace DAWA_Api_Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<int?>("Itemid")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Facturaid");
+
+                    b.HasIndex("Itemid");
 
                     b.ToTable("ItemRopaCarritos");
                 });
@@ -236,7 +242,15 @@ namespace DAWA_Api_Proyecto.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DAWA_Api_Proyecto.Models.Item_ropa", "Item")
+                        .WithMany()
+                        .HasForeignKey("Itemid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Factura");
+
+                    b.Navigation("Item");
                 });
 #pragma warning restore 612, 618
         }

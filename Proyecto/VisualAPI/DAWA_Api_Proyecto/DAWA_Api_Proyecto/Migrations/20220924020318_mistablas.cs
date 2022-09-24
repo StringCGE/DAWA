@@ -4,7 +4,7 @@
 
 namespace DAWA_Api_Proyecto.Migrations
 {
-    public partial class mitabla : Migration
+    public partial class mistablas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -113,7 +113,8 @@ namespace DAWA_Api_Proyecto.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cantidad = table.Column<int>(type: "int", nullable: false),
-                    Facturaid = table.Column<int>(type: "int", nullable: false)
+                    Facturaid = table.Column<int>(type: "int", nullable: false),
+                    Itemid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -122,6 +123,12 @@ namespace DAWA_Api_Proyecto.Migrations
                         name: "FK_ItemRopaCarritos_Facturas_Facturaid",
                         column: x => x.Facturaid,
                         principalTable: "Facturas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemRopaCarritos_Item_ropas_Itemid",
+                        column: x => x.Itemid,
+                        principalTable: "Item_ropas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -140,13 +147,15 @@ namespace DAWA_Api_Proyecto.Migrations
                 name: "IX_ItemRopaCarritos_Facturaid",
                 table: "ItemRopaCarritos",
                 column: "Facturaid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemRopaCarritos_Itemid",
+                table: "ItemRopaCarritos",
+                column: "Itemid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Item_ropas");
-
             migrationBuilder.DropTable(
                 name: "ItemRopaCarritos");
 
@@ -154,13 +163,16 @@ namespace DAWA_Api_Proyecto.Migrations
                 name: "TokenDBs");
 
             migrationBuilder.DropTable(
-                name: "Grupos");
-
-            migrationBuilder.DropTable(
                 name: "Facturas");
 
             migrationBuilder.DropTable(
+                name: "Item_ropas");
+
+            migrationBuilder.DropTable(
                 name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Grupos");
         }
     }
 }

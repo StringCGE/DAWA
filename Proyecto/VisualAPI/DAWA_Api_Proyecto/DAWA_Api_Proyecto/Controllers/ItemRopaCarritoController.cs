@@ -21,9 +21,9 @@ using System.Security.Claims;
 
 namespace DAWA_Api_Proyecto.Controllers
 {
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ItemRopaCarritoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -33,28 +33,25 @@ namespace DAWA_Api_Proyecto.Controllers
             _context = context;
         }
         // GET: api/ItemRopaCarrito
-        [HttpGet]
+        [HttpGet ("proforma/{idproforma}")]
         [EnableQuery]
-        public async Task<ActionResult<IEnumerable<ItemRopaCarrito>>> GetItemRopaCarritos()
+        public async Task<ActionResult<IEnumerable<ItemRopaCarrito>>> GetItemRopaCarritoByProforma(int idproforma)
         {
             if (_context.ItemRopaCarritos == null)
             {
                 return NotFound();
             }
-            return await _context.ItemRopaCarritos.ToListAsync();
-            //List<ItemRopaCarrito> l = new List<ItemRopaCarrito>();
-            //l.Add(new ItemRopaCarrito(25,"algo",15,20,"0xaaaa",45,"aaa",45,"detalle"));
-            //return await Task.Run(l.ToArray());
-
-            //        var brandItems = await _context.CatalogBrands
-            //.Where(b => b.Enabled)
-            //.OrderBy(b => b.Name)
-            //.Select(b => new SelectListItem
-            //{
-            //    Value = b.Id,
-            //    Text = b.Name
-            //})
-            //.ToListAsync();
+            List<ItemRopaCarrito> l = await _context.ItemRopaCarritos
+                .Where(c => c.Facturaid == idproforma)
+                .ToListAsync();
+            
+            foreach(ItemRopaCarrito irc in l)
+            {
+                irc.Item = _context.Item_ropas.Find(irc.Itemid);
+            }
+            return await _context.ItemRopaCarritos
+                .Where(c => c.Facturaid == idproforma)
+                .ToListAsync();
         }
 
         // GET: api/ItemRopaCarrito/<id>
@@ -109,16 +106,21 @@ namespace DAWA_Api_Proyecto.Controllers
         // POST: api/ItemRopaCarrito
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ItemRopaCarrito>> PostItemRopaCarrito(ItemRopaCarrito ItemRopaCarrito)
+        public async Task<ActionResult<ItemRopaCarrito>> PostItemRopaCarrito(ItemRopaCarrito_SM irc)
         {
+            var v = new ItemRopaCarrito();
+            v.Id = irc.Id;
+            v.Itemid = irc.Itemid;
+            v.Facturaid = irc.Facturaid;
+            v.Cantidad = irc.Cantidad;
             if (_context.ItemRopaCarritos == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.ItemRopaCarritos'  is null.");
             }
-            _context.ItemRopaCarritos.Add(ItemRopaCarrito);
+            _context.ItemRopaCarritos.Add(v);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetItemRopaCarrito", new { id = ItemRopaCarrito.Id }, ItemRopaCarrito);
+            return CreatedAtAction("GetItemRopaCarrito", new { id = v.Id }, v);
         }
 
         // DELETE: api/ItemRopaCarrito/<id>
