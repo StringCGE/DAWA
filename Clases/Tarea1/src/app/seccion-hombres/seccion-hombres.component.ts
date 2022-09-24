@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { ItemRopa } from '../clase/item-ropa';
 @Component({
@@ -15,10 +16,19 @@ export class SeccionHombresComponent implements OnInit {
   protected lItemRopa:ItemRopa[] = [];
 
   ngOnInit(): void {
-    this.lItemRopa = this.apiService.Hombre_GetItems();
+    this.GetItems(this.apiService);
     this.apiService.cambioHombre.subscribe(apiService => {
-      this.lItemRopa = apiService.Hombre_GetItems();
+      this.GetItems(apiService);
     });
   }
-  
+  GetItems(apiService: ApiService){
+    let obj:Observable<any> = apiService.Hombre_GetItems();
+    obj.subscribe((dato:any)=>{
+      this.lItemRopa = dato;
+    });
+  }
+
+  onLogin(miform:any){
+    
+  }
 }

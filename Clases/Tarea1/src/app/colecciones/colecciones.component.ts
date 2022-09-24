@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { ItemRopa } from '../clase/item-ropa';
 import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
@@ -18,9 +19,15 @@ export class ColeccionesComponent implements OnInit {
 
   protected lItemRopa:ItemRopa[] = [];
   ngOnInit(): void {
-    this.lItemRopa = this.apiService.Coleccion_GetItems();
-    this.apiService.cambioColeccion.subscribe(apiService => {
-      this.lItemRopa = apiService.Coleccion_GetItems();
+    this.GetItems(this.apiService);
+    this.apiService.cambioHombre.subscribe(apiService => {
+      this.GetItems(apiService);
+    });
+  }
+  GetItems(apiService: ApiService){
+    let obj:Observable<any> = apiService.Coleccion_GetItems();
+    obj.subscribe((dato:any)=>{
+      this.lItemRopa = dato;
     });
   }
   AgregarCarrito(value:ItemRopa){

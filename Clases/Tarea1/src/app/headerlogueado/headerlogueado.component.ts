@@ -39,6 +39,9 @@ export class HeaderlogueadoComponent implements OnInit {
   openCarrito(){
     this.router.navigate(['/carrito']);
   }
+  openPanel(){
+    this.router.navigate(['/panel']);
+  }
 
   cerrarSesion(){
     this.estalogueadoService.salir();

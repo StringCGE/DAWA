@@ -1,5 +1,5 @@
 <mat-card>    
-    <form [formGroup]="usuarioLogin" (ngSubmit)="onSubmit()">
+    <form [formGroup]="usuarioLogin" (ngSubmit)="onSubmit(usuarioLogin.value)">
         <mat-form-field class="campos-field">
             <input matInput placeholder="Usuario" formControlName="usuario" [(ngModel)] = "usuario">
         </mat-form-field>

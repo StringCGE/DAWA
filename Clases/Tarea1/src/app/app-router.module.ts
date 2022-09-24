@@ -12,6 +12,7 @@ import { SeccionHombresComponent } from "./seccion-hombres/seccion-hombres.compo
 import { CarritoComponent } from "./carrito/carrito.component";
 import { MujerComponent } from "./mujer/mujer.component";
 import { SeccionMujeresComponent } from "./seccion-mujeres/seccion-mujeres.component";
+import { PanelComponent } from "./vista/panel/panel.component";
 
 
 
@@ -29,6 +30,7 @@ const routes:Routes=[
     {path:'colecciones', component: ColeccionesComponent},
     {path:'novedades', component: NovedadesComponent},
     {path:'carrito', component: CarritoComponent},
+    {path:'panel', component: PanelComponent},
     
     {path:'sesion', component:LoginComponent}
 

@@ -11,6 +11,7 @@ import { ApiService } from '../api.service';
 import { ItemRopaCarrito } from '../clase/item-ropa-carrito';
 import { ItemRopa } from '../clase/item-ropa';
 import { ItemRopaCarritoInterface } from '../interfaces/item-ropa-carrito-interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-carrito',
@@ -23,7 +24,7 @@ export class CarritoComponent implements OnInit {
   dataSource: any = [];
   displayedColumns: string[] = ['id','img', 'nombre', 'precio','cantidad','suma','opciones']
   dataCarrito: ItemRopaCarrito[];
-  data: ItemRopa[];
+  data: ItemRopaCarrito[];
   suma:number;
   nuevoNovedades:any;
   nav: any;
@@ -77,9 +78,14 @@ export class CarritoComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.actualizarDataSource();
+    console.log("this.apiService.EstaLogueado()");
+    console.log(!this.apiService.EstaLogueado());
+    if (!this.apiService.EstaLogueado()){
+      console.log("EstaLogueado() en if");
+      this.router.navigate(['']);
+    }
     
-    console.log(this.data);
+    this.actualizarDataSource();
 
     // this.apiService.cambioHombre.subscribe(apiService => {
     //   this.actualizarDataSource();
@@ -89,14 +95,53 @@ export class CarritoComponent implements OnInit {
     });
   }
   actualizarDataSource(){
-    this.data = this.apiService.CarritoItemRopa_GetItems();
-    this.dataSource = new MatTableDataSource<ItemRopa>(this.data as ItemRopa[]);
-    this.actualizarSuma();
+    
+    let obj:Observable<any> = this.apiService.GetProforma();
+    obj.subscribe(
+      {
+        next: (dato:any)=>{
+          console.log("GetProforma OK");
+          console.log(dato);
+/*-------------------------------------------------------*/
+
+let obj:Observable<any> = this.apiService.GetItemsPorProforma();
+obj.subscribe(
+  {
+    next: (dato:any)=>{
+      console.log("GetItemPorProforma OK");
+      console.log(dato);
+      this.data = dato;
+      this.dataSource = new MatTableDataSource<ItemRopaCarrito>(this.data as ItemRopaCarrito[]);
+      this.actualizarSuma();
+    },
+    error: (e) => {
+      console.log("GetItemPorProforma failure");
+      console.log(e);
+    },
+    complete: () => {
+
+    } 
+  }
+);
+
+/*-------------------------------------------------------*/
+        },
+        error: (e) => {
+          console.log("GetProforma failure");
+          console.log(e);
+        },
+        complete: () => {
+    
+        } 
+      }
+    );
+    console.log(this.data);
+
   }
   actualizarSuma(){
     this.suma = 0;
     this.data.forEach(element => {
-      this.suma += element.cantidad * element.precio;
+      this.suma += element.cantidad * element.item.precio;
     });
   }
   openDialogAgregar(){
