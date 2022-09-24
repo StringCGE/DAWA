@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  mssql:
+    container_name: "mi_mssql"
+    hostname: mssql
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password!"
+      MSSQL_PID: "Express"
+    ports:
+      - "2500:1433"
+
+  api:
+    container_name: "mi_api"
+    hostname: api
+    image: dawaapiproyecto:latest
+    depends_on:
+      - mssql
+    ports:
+      - "2000:80"
+
+#docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Password!" -e "MSSQL_PID=Express" -p 2017:1433 -d --name SQL_Server_2017 mcr.microsoft.com/mssql/server:2017-latest

@@ -265,3 +265,9 @@ E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Microsoft.OData.Core.dll
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Microsoft.OData.Edm.dll
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Microsoft.Spatial.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\DAWA_Api_Proyecto.staticwebassets.runtime.json
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Scrutor.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
