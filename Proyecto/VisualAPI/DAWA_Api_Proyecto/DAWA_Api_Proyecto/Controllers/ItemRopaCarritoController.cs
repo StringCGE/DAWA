@@ -21,9 +21,9 @@ using System.Security.Claims;
 
 namespace DAWA_Api_Proyecto.Controllers
 {
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ItemRopaCarritoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -109,7 +109,7 @@ namespace DAWA_Api_Proyecto.Controllers
         public async Task<ActionResult<ItemRopaCarrito>> PostItemRopaCarrito(ItemRopaCarrito_SM irc)
         {
             var v = new ItemRopaCarrito();
-            v.Id = irc.Id;
+            v.Id = 0;
             v.Itemid = irc.Itemid;
             v.Facturaid = irc.Facturaid;
             v.Cantidad = irc.Cantidad;

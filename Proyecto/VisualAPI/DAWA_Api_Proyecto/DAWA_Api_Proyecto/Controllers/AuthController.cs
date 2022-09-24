@@ -32,7 +32,7 @@ namespace DAWA_Api_Proyecto.Controllers
             Llave = config.GetSection("settings").GetSection("secretkey").Value;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         [EnableQuery]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
         {
@@ -44,7 +44,7 @@ namespace DAWA_Api_Proyecto.Controllers
         }
 
         // GET: api/Usuarioss/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult<Usuario>> GetUsuarios(int id)
         {
             try

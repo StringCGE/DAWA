@@ -1,14 +1,19 @@
 ﻿using DAWA_Api_Proyecto.Data;
 using DAWA_Api_Proyecto.Models;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace DAWA_Api_Proyecto.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class GrupoController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
