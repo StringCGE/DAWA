@@ -267,3 +267,7 @@ E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\obj\Releas
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\obj\Release\net6.0\ref\DAWA_Api_Proyecto.dll
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\DAWA_Api_Proyecto.staticwebassets.runtime.json
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Scrutor.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Swashbuckle.AspNetCore.Filters.dll
+E:\GitHub\DAWA\Proyecto\VisualAPI\DAWA_Api_Proyecto\DAWA_Api_Proyecto\bin\Release\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
